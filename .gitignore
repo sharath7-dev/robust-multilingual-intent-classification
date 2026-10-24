@@ -218,3 +218,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project data and trained artifacts
+data/
+models/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+
+# Secrets and experiment services
+.env
+.env.*
+wandb/
+mlruns/
+
+# Generated temporary outputs
+*.log
+.ipynb_checkpoints/

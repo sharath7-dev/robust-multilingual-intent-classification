@@ -1,0 +1,25 @@
+{
+  "model": "word-and-character TF-IDF with logistic regression",
+  "random_seed": 42,
+  "scikit_learn_version": "1.6.1",
+  "training_examples": 26193,
+  "validation_examples": 4629,
+  "training_seconds": 61.81412148475647,
+  "validation_accuracy": 0.836897818103262,
+  "validation_macro_f1": 0.8209671968439408,
+  "per_language": {
+    "en-US": {
+      "accuracy": 0.8593648736228127,
+      "macro_f1": 0.8394044010796531
+    },
+    "hi-IN": {
+      "accuracy": 0.830848995463383,
+      "macro_f1": 0.8140150150598618
+    },
+    "kn-IN": {
+      "accuracy": 0.8204795852235904,
+      "macro_f1": 0.8043209279779417
+    }
+  },
+  "test_set_evaluated": false
+}

@@ -1,0 +1,36 @@
+{
+  "model": "FacebookAI/xlm-roberta-base",
+  "training_type": "square_root_inverse_frequency_weighted_cross_entropy",
+  "random_seed": 42,
+  "epochs": 2,
+  "learning_rate": 2e-05,
+  "train_batch_size": 16,
+  "maximum_sequence_length": 64,
+  "training_examples": 26193,
+  "validation_examples": 4629,
+  "training_minutes": 12.447666923205057,
+  "best_checkpoint": "/content/robust-multilingual-intent-classification/models/xlmr_weighted/checkpoint-3276",
+  "best_epoch": 2,
+  "validation_accuracy": 0.8522359040829552,
+  "validation_macro_f1": 0.7666557770079698,
+  "per_language": {
+    "en-US": {
+      "accuracy": 0.8716785482825664,
+      "macro_f1": 0.8026621824693738
+    },
+    "hi-IN": {
+      "accuracy": 0.8496435515230071,
+      "macro_f1": 0.7770014207345417
+    },
+    "kn-IN": {
+      "accuracy": 0.8353856124432922,
+      "macro_f1": 0.7443108086925453
+    }
+  },
+  "clean_xlmr_macro_f1": 0.7624657472558254,
+  "tfidf_macro_f1": 0.8209671968439408,
+  "improvement_vs_clean_xlmr": 0.004190029752144442,
+  "difference_vs_tfidf": -0.05431141983597099,
+  "transformers_version": "5.20.2",
+  "test_set_evaluated": false
+}

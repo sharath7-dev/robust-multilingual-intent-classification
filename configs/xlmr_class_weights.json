@@ -1,0 +1,208 @@
+{
+  "method": "square_root_inverse_frequency",
+  "normalisation": "mean weight equals 1",
+  "formula": "sqrt(N / (K * class_count)), then divide by mean",
+  "number_of_classes": 50,
+  "weights": {
+    "alarm_query": {
+      "training_examples": 390,
+      "weight": 0.8249056339263916
+    },
+    "alarm_set": {
+      "training_examples": 546,
+      "weight": 0.6971725225448608
+    },
+    "audio_volume_down": {
+      "training_examples": 156,
+      "weight": 1.3042902946472168
+    },
+    "audio_volume_mute": {
+      "training_examples": 330,
+      "weight": 0.8967669606208801
+    },
+    "audio_volume_other": {
+      "training_examples": 54,
+      "weight": 2.216867208480835
+    },
+    "calendar_set": {
+      "training_examples": 2430,
+      "weight": 0.33047106862068176
+    },
+    "cooking_query": {
+      "training_examples": 12,
+      "weight": 4.702685832977295
+    },
+    "cooking_recipe": {
+      "training_examples": 621,
+      "weight": 0.6537185311317444
+    },
+    "datetime_convert": {
+      "training_examples": 156,
+      "weight": 1.3042902946472168
+    },
+    "datetime_query": {
+      "training_examples": 1050,
+      "weight": 0.5027382373809814
+    },
+    "email_querycontact": {
+      "training_examples": 381,
+      "weight": 0.8345917463302612
+    },
+    "general_greet": {
+      "training_examples": 75,
+      "weight": 1.88107430934906
+    },
+    "general_joke": {
+      "training_examples": 216,
+      "weight": 1.1084336042404175
+    },
+    "general_quirky": {
+      "training_examples": 1665,
+      "weight": 0.3992357850074768
+    },
+    "iot_cleaning": {
+      "training_examples": 279,
+      "weight": 0.9752916097640991
+    },
+    "iot_coffee": {
+      "training_examples": 372,
+      "weight": 0.8446272611618042
+    },
+    "iot_hue_lightchange": {
+      "training_examples": 375,
+      "weight": 0.8412420153617859
+    },
+    "iot_hue_lightdim": {
+      "training_examples": 228,
+      "weight": 1.0788700580596924
+    },
+    "iot_hue_lightoff": {
+      "training_examples": 459,
+      "weight": 0.7603791952133179
+    },
+    "iot_hue_lighton": {
+      "training_examples": 66,
+      "weight": 2.0052318572998047
+    },
+    "iot_hue_lightup": {
+      "training_examples": 228,
+      "weight": 1.0788700580596924
+    },
+    "iot_wemo_off": {
+      "training_examples": 156,
+      "weight": 1.3042902946472168
+    },
+    "iot_wemo_on": {
+      "training_examples": 144,
+      "weight": 1.357548475265503
+    },
+    "lists_createoradd": {
+      "training_examples": 531,
+      "weight": 0.7069510221481323
+    },
+    "lists_query": {
+      "training_examples": 594,
+      "weight": 0.6684106588363647
+    },
+    "lists_remove": {
+      "training_examples": 492,
+      "weight": 0.7344360947608948
+    },
+    "music_dislikeness": {
+      "training_examples": 42,
+      "weight": 2.5136911869049072
+    },
+    "music_likeness": {
+      "training_examples": 339,
+      "weight": 0.8847829103469849
+    },
+    "music_query": {
+      "training_examples": 462,
+      "weight": 0.757906436920166
+    },
+    "music_settings": {
+      "training_examples": 153,
+      "weight": 1.3170154094696045
+    },
+    "news_query": {
+      "training_examples": 1509,
+      "weight": 0.4193647801876068
+    },
+    "play_audiobook": {
+      "training_examples": 450,
+      "weight": 0.7679453492164612
+    },
+    "play_game": {
+      "training_examples": 336,
+      "weight": 0.8887240886688232
+    },
+    "play_podcasts": {
+      "training_examples": 579,
+      "weight": 0.6770134568214417
+    },
+    "play_radio": {
+      "training_examples": 849,
+      "weight": 0.5590912699699402
+    },
+    "qa_currency": {
+      "training_examples": 426,
+      "weight": 0.7892812490463257
+    },
+    "qa_definition": {
+      "training_examples": 801,
+      "weight": 0.5755993723869324
+    },
+    "qa_factoid": {
+      "training_examples": 1632,
+      "weight": 0.403251975774765
+    },
+    "qa_maths": {
+      "training_examples": 234,
+      "weight": 1.064948558807373
+    },
+    "recommendation_events": {
+      "training_examples": 570,
+      "weight": 0.6823373436927795
+    },
+    "recommendation_locations": {
+      "training_examples": 519,
+      "weight": 0.7150771617889404
+    },
+    "recommendation_movies": {
+      "training_examples": 210,
+      "weight": 1.1241569519042969
+    },
+    "social_post": {
+      "training_examples": 849,
+      "weight": 0.5590912699699402
+    },
+    "social_query": {
+      "training_examples": 324,
+      "weight": 0.9050322771072388
+    },
+    "takeaway_order": {
+      "training_examples": 405,
+      "weight": 0.8094854950904846
+    },
+    "takeaway_query": {
+      "training_examples": 366,
+      "weight": 0.8515223264694214
+    },
+    "transport_query": {
+      "training_examples": 681,
+      "weight": 0.624256432056427
+    },
+    "transport_ticket": {
+      "training_examples": 381,
+      "weight": 0.8345917463302612
+    },
+    "transport_traffic": {
+      "training_examples": 351,
+      "weight": 0.8695269227027893
+    },
+    "weather_query": {
+      "training_examples": 1719,
+      "weight": 0.3929150402545929
+    }
+  }
+}

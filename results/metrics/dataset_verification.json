@@ -1,0 +1,82 @@
+{
+  "dataset": "MASSIVE 1.1",
+  "source_archive": "amazon-massive-dataset-1.1.tar.gz",
+  "archive_size_mb": 38.39,
+  "locales": [
+    "en-US",
+    "hi-IN",
+    "kn-IN"
+  ],
+  "rows_per_locale": 16521,
+  "combined_rows": 49563,
+  "official_split_counts_per_locale": {
+    "train": 11514,
+    "dev": 2033,
+    "test": 2974
+  },
+  "unique_intents": 60,
+  "missing_utterances": 0,
+  "missing_intents": 0,
+  "duplicate_ids_per_locale": 0,
+  "parallel_split_conflicts": 0,
+  "parallel_intent_conflicts": 0,
+  "known_intents": 50,
+  "validation_oos_intents": [
+    "alarm_remove",
+    "audio_volume_up",
+    "calendar_query",
+    "calendar_remove",
+    "email_addcontact"
+  ],
+  "test_oos_intents": [
+    "email_query",
+    "email_sendemail",
+    "play_music",
+    "qa_stock",
+    "transport_taxi"
+  ],
+  "experimental_split_sizes": {
+    "train_known": {
+      "total": 26193,
+      "by_locale": {
+        "en-US": 8731,
+        "hi-IN": 8731,
+        "kn-IN": 8731
+      }
+    },
+    "validation_known": {
+      "total": 4629,
+      "by_locale": {
+        "en-US": 1543,
+        "hi-IN": 1543,
+        "kn-IN": 1543
+      }
+    },
+    "validation_oos": {
+      "total": 540,
+      "by_locale": {
+        "en-US": 180,
+        "hi-IN": 180,
+        "kn-IN": 180
+      }
+    },
+    "test_known": {
+      "total": 6831,
+      "by_locale": {
+        "en-US": 2277,
+        "hi-IN": 2277,
+        "kn-IN": 2277
+      }
+    },
+    "test_oos": {
+      "total": 1374,
+      "by_locale": {
+        "en-US": 458,
+        "hi-IN": 458,
+        "kn-IN": 458
+      }
+    }
+  },
+  "training_oos_leakage": false,
+  "verification_passed": true
+}

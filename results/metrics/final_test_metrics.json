@@ -1,0 +1,1064 @@
+{
+  "dataset": "MASSIVE 1.1",
+  "evaluation_date": "2026-10-25",
+  "protocol_commit": "66d38a4",
+  "primary_model": "Combined-Augmented XLM-R",
+  "test_rows": {
+    "known": 6831,
+    "oos": 1374,
+    "total": 8205
+  },
+  "known_intents_present": 49,
+  "oos_intents": [
+    "email_query",
+    "email_sendemail",
+    "play_music",
+    "qa_stock",
+    "transport_taxi"
+  ],
+  "noise_changed_rows": {
+    "0.05": 1084,
+    "0.1": 2047,
+    "0.15": 2851
+  },
+  "native_script_residues_after_transliteration": 0,
+  "clean_and_spelling_noise_results": [
+    {
+      "model": "TF-IDF",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "accuracy": 0.825794,
+      "macro_f1": 0.804797,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "accuracy": 0.816864,
+      "macro_f1": 0.794994,
+      "macro_f1_drop": 0.009803
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "accuracy": 0.807056,
+      "macro_f1": 0.783579,
+      "macro_f1_drop": 0.021218
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "accuracy": 0.79432,
+      "macro_f1": 0.772,
+      "macro_f1_drop": 0.032796
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "accuracy": 0.849363,
+      "macro_f1": 0.790295,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "accuracy": 0.838091,
+      "macro_f1": 0.780613,
+      "macro_f1_drop": 0.009682
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "accuracy": 0.825355,
+      "macro_f1": 0.766282,
+      "macro_f1_drop": 0.024014
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "accuracy": 0.807495,
+      "macro_f1": 0.748362,
+      "macro_f1_drop": 0.041933
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "accuracy": 0.860343,
+      "macro_f1": 0.814431,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "accuracy": 0.853755,
+      "macro_f1": 0.808394,
+      "macro_f1_drop": 0.006037
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "accuracy": 0.843654,
+      "macro_f1": 0.798352,
+      "macro_f1_drop": 0.016079
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "accuracy": 0.829015,
+      "macro_f1": 0.780797,
+      "macro_f1_drop": 0.033634
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "accuracy": 0.856976,
+      "macro_f1": 0.82049,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "accuracy": 0.850681,
+      "macro_f1": 0.815668,
+      "macro_f1_drop": 0.004822
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "accuracy": 0.839848,
+      "macro_f1": 0.802581,
+      "macro_f1_drop": 0.017909
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "accuracy": 0.827551,
+      "macro_f1": 0.788302,
+      "macro_f1_drop": 0.032188
+    }
+  ],
+  "clean_and_spelling_noise_per_language": [
+    {
+      "model": "TF-IDF",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.850242,
+      "macro_f1": 0.839378,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.822134,
+      "macro_f1": 0.78205,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.805007,
+      "macro_f1": 0.79039,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.841458,
+      "macro_f1": 0.830158,
+      "macro_f1_drop": 0.009219
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.815108,
+      "macro_f1": 0.775019,
+      "macro_f1_drop": 0.007031
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.794027,
+      "macro_f1": 0.77865,
+      "macro_f1_drop": 0.011739
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.827404,
+      "macro_f1": 0.815746,
+      "macro_f1_drop": 0.023631
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.806763,
+      "macro_f1": 0.762833,
+      "macro_f1_drop": 0.019217
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.787,
+      "macro_f1": 0.7725,
+      "macro_f1_drop": 0.01789
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.810716,
+      "macro_f1": 0.801507,
+      "macro_f1_drop": 0.037871
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.795784,
+      "macro_f1": 0.751373,
+      "macro_f1_drop": 0.030677
+    },
+    {
+      "model": "TF-IDF",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.77646,
+      "macro_f1": 0.762954,
+      "macro_f1_drop": 0.027435
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.880545,
+      "macro_f1": 0.82124,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.847606,
+      "macro_f1": 0.781925,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.819939,
+      "macro_f1": 0.7652,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.860782,
+      "macro_f1": 0.802081,
+      "macro_f1_drop": 0.01916
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.842776,
+      "macro_f1": 0.782658,
+      "macro_f1_drop": -0.000733
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.810716,
+      "macro_f1": 0.754512,
+      "macro_f1_drop": 0.010689
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.837066,
+      "macro_f1": 0.776625,
+      "macro_f1_drop": 0.044615
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.839701,
+      "macro_f1": 0.779928,
+      "macro_f1_drop": 0.001997
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.799297,
+      "macro_f1": 0.739498,
+      "macro_f1_drop": 0.025703
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.815547,
+      "macro_f1": 0.756626,
+      "macro_f1_drop": 0.064614
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.823452,
+      "macro_f1": 0.761345,
+      "macro_f1_drop": 0.02058
+    },
+    {
+      "model": "Weighted XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.783487,
+      "macro_f1": 0.724621,
+      "macro_f1_drop": 0.040579
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.880545,
+      "macro_f1": 0.837469,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.871322,
+      "macro_f1": 0.821839,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.829161,
+      "macro_f1": 0.785297,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.873957,
+      "macro_f1": 0.832958,
+      "macro_f1_drop": 0.004511
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.868248,
+      "macro_f1": 0.816849,
+      "macro_f1_drop": 0.00499
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.81906,
+      "macro_f1": 0.775416,
+      "macro_f1_drop": 0.009881
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.85639,
+      "macro_f1": 0.817728,
+      "macro_f1_drop": 0.01974
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.862978,
+      "macro_f1": 0.810277,
+      "macro_f1_drop": 0.011562
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.811594,
+      "macro_f1": 0.765604,
+      "macro_f1_drop": 0.019693
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.837505,
+      "macro_f1": 0.78701,
+      "macro_f1_drop": 0.050459
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.85112,
+      "macro_f1": 0.793835,
+      "macro_f1_drop": 0.028004
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.798419,
+      "macro_f1": 0.756476,
+      "macro_f1_drop": 0.028821
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.878349,
+      "macro_f1": 0.851816,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.863417,
+      "macro_f1": 0.814503,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "clean",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.829161,
+      "macro_f1": 0.79585,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.871322,
+      "macro_f1": 0.845305,
+      "macro_f1_drop": 0.00651
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.859903,
+      "macro_f1": 0.813291,
+      "macro_f1_drop": 0.001212
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_05",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.820817,
+      "macro_f1": 0.789004,
+      "macro_f1_drop": 0.006846
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.849363,
+      "macro_f1": 0.822076,
+      "macro_f1_drop": 0.02974
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.857708,
+      "macro_f1": 0.809376,
+      "macro_f1_drop": 0.005127
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_10",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.812473,
+      "macro_f1": 0.777465,
+      "macro_f1_drop": 0.018385
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.833992,
+      "macro_f1": 0.797797,
+      "macro_f1_drop": 0.054019
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.847606,
+      "macro_f1": 0.80189,
+      "macro_f1_drop": 0.012613
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "condition": "noise_15",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.801054,
+      "macro_f1": 0.766363,
+      "macro_f1_drop": 0.029487
+    }
+  ],
+  "transliteration_results": [
+    {
+      "model": "TF-IDF",
+      "group": "all_languages",
+      "samples": 6831,
+      "clean_accuracy": 0.825794,
+      "transliterated_accuracy": 0.354414,
+      "clean_macro_f1": 0.804797,
+      "transliterated_macro_f1": 0.421622,
+      "macro_f1_drop": 0.383175
+    },
+    {
+      "model": "TF-IDF",
+      "group": "english_control",
+      "samples": 2277,
+      "clean_accuracy": 0.850242,
+      "transliterated_accuracy": 0.850242,
+      "clean_macro_f1": 0.839378,
+      "transliterated_macro_f1": 0.839378,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "group": "hindi_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.822134,
+      "transliterated_accuracy": 0.110233,
+      "clean_macro_f1": 0.78205,
+      "transliterated_macro_f1": 0.077878,
+      "macro_f1_drop": 0.704172
+    },
+    {
+      "model": "TF-IDF",
+      "group": "kannada_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.805007,
+      "transliterated_accuracy": 0.102767,
+      "clean_macro_f1": 0.79039,
+      "transliterated_macro_f1": 0.056694,
+      "macro_f1_drop": 0.733695
+    },
+    {
+      "model": "TF-IDF",
+      "group": "hindi_kannada_combined",
+      "samples": 4554,
+      "clean_accuracy": 0.81357,
+      "transliterated_accuracy": 0.1065,
+      "clean_macro_f1": 0.788095,
+      "transliterated_macro_f1": 0.071832,
+      "macro_f1_drop": 0.716263
+    },
+    {
+      "model": "Weighted XLM-R",
+      "group": "all_languages",
+      "samples": 6831,
+      "clean_accuracy": 0.849363,
+      "transliterated_accuracy": 0.3935,
+      "clean_macro_f1": 0.790295,
+      "transliterated_macro_f1": 0.406754,
+      "macro_f1_drop": 0.383542
+    },
+    {
+      "model": "Weighted XLM-R",
+      "group": "english_control",
+      "samples": 2277,
+      "clean_accuracy": 0.880545,
+      "transliterated_accuracy": 0.880545,
+      "clean_macro_f1": 0.82124,
+      "transliterated_macro_f1": 0.82124,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "group": "hindi_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.847606,
+      "transliterated_accuracy": 0.191919,
+      "clean_macro_f1": 0.781925,
+      "transliterated_macro_f1": 0.13295,
+      "macro_f1_drop": 0.648975
+    },
+    {
+      "model": "Weighted XLM-R",
+      "group": "kannada_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.819939,
+      "transliterated_accuracy": 0.108037,
+      "clean_macro_f1": 0.7652,
+      "transliterated_macro_f1": 0.064333,
+      "macro_f1_drop": 0.700868
+    },
+    {
+      "model": "Weighted XLM-R",
+      "group": "hindi_kannada_combined",
+      "samples": 4554,
+      "clean_accuracy": 0.833773,
+      "transliterated_accuracy": 0.149978,
+      "clean_macro_f1": 0.774588,
+      "transliterated_macro_f1": 0.106395,
+      "macro_f1_drop": 0.668192
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "group": "all_languages",
+      "samples": 6831,
+      "clean_accuracy": 0.860343,
+      "transliterated_accuracy": 0.414434,
+      "clean_macro_f1": 0.814431,
+      "transliterated_macro_f1": 0.408366,
+      "macro_f1_drop": 0.406064
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "group": "english_control",
+      "samples": 2277,
+      "clean_accuracy": 0.880545,
+      "transliterated_accuracy": 0.880545,
+      "clean_macro_f1": 0.837469,
+      "transliterated_macro_f1": 0.837469,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "group": "hindi_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.871322,
+      "transliterated_accuracy": 0.228371,
+      "clean_macro_f1": 0.821839,
+      "transliterated_macro_f1": 0.152035,
+      "macro_f1_drop": 0.669804
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "group": "kannada_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.829161,
+      "transliterated_accuracy": 0.134387,
+      "clean_macro_f1": 0.785297,
+      "transliterated_macro_f1": 0.096493,
+      "macro_f1_drop": 0.688804
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "group": "hindi_kannada_combined",
+      "samples": 4554,
+      "clean_accuracy": 0.850242,
+      "transliterated_accuracy": 0.181379,
+      "clean_macro_f1": 0.803056,
+      "transliterated_macro_f1": 0.129907,
+      "macro_f1_drop": 0.673149
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "all_languages",
+      "samples": 6831,
+      "clean_accuracy": 0.856976,
+      "transliterated_accuracy": 0.68804,
+      "clean_macro_f1": 0.82049,
+      "transliterated_macro_f1": 0.628729,
+      "macro_f1_drop": 0.191761
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "english_control",
+      "samples": 2277,
+      "clean_accuracy": 0.878349,
+      "transliterated_accuracy": 0.878349,
+      "clean_macro_f1": 0.851816,
+      "transliterated_macro_f1": 0.851816,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "hindi_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.863417,
+      "transliterated_accuracy": 0.631972,
+      "clean_macro_f1": 0.814503,
+      "transliterated_macro_f1": 0.534082,
+      "macro_f1_drop": 0.280421
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "kannada_transliterated",
+      "samples": 2277,
+      "clean_accuracy": 0.829161,
+      "transliterated_accuracy": 0.553799,
+      "clean_macro_f1": 0.79585,
+      "transliterated_macro_f1": 0.468085,
+      "macro_f1_drop": 0.327765
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "hindi_kannada_combined",
+      "samples": 4554,
+      "clean_accuracy": 0.846289,
+      "transliterated_accuracy": 0.592885,
+      "clean_macro_f1": 0.805283,
+      "transliterated_macro_f1": 0.503787,
+      "macro_f1_drop": 0.301496
+    }
+  ],
+  "unseen_intent_results": [
+    {
+      "model": "TF-IDF",
+      "temperature": 0.739813,
+      "threshold": 0.536,
+      "auroc": 0.843949,
+      "aupr_oos": 0.453138,
+      "fpr_at_95_tpr": 0.444591,
+      "binary_accuracy": 0.809872,
+      "balanced_accuracy": 0.724473,
+      "binary_macro_f1": 0.69706,
+      "oos_precision": 0.449013,
+      "oos_recall": 0.59607,
+      "oos_f1": 0.512195,
+      "known_coverage": 0.852877,
+      "selective_known_accuracy": 0.901648
+    },
+    {
+      "model": "Weighted XLM-R",
+      "temperature": 0.920394,
+      "threshold": 0.567,
+      "auroc": 0.817428,
+      "aupr_oos": 0.402974,
+      "fpr_at_95_tpr": 0.547211,
+      "binary_accuracy": 0.820232,
+      "balanced_accuracy": 0.664995,
+      "binary_macro_f1": 0.669208,
+      "oos_precision": 0.460761,
+      "oos_recall": 0.431587,
+      "oos_f1": 0.445697,
+      "known_coverage": 0.898404,
+      "selective_known_accuracy": 0.904514
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "temperature": 0.96551,
+      "threshold": 0.797,
+      "auroc": 0.813657,
+      "aupr_oos": 0.408937,
+      "fpr_at_95_tpr": 0.569463,
+      "binary_accuracy": 0.785497,
+      "balanced_accuracy": 0.730183,
+      "binary_macro_f1": 0.682906,
+      "oos_precision": 0.410813,
+      "oos_recall": 0.647016,
+      "oos_f1": 0.502544,
+      "known_coverage": 0.813351,
+      "selective_known_accuracy": 0.945284
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "temperature": 0.9661,
+      "threshold": 0.728,
+      "auroc": 0.832876,
+      "aupr_oos": 0.414637,
+      "fpr_at_95_tpr": 0.481628,
+      "binary_accuracy": 0.802681,
+      "balanced_accuracy": 0.72219,
+      "binary_macro_f1": 0.690912,
+      "oos_precision": 0.435424,
+      "oos_recall": 0.601164,
+      "oos_f1": 0.505044,
+      "known_coverage": 0.843215,
+      "selective_known_accuracy": 0.930208
+    }
+  ],
+  "unseen_intent_per_language": [
+    {
+      "model": "TF-IDF",
+      "locale": "en-US",
+      "samples": 2735,
+      "auroc": 0.858595,
+      "aupr_oos": 0.495043,
+      "oos_precision": 0.482109,
+      "oos_recall": 0.558952,
+      "oos_f1": 0.517695,
+      "known_coverage": 0.879227,
+      "selective_known_accuracy": 0.906094
+    },
+    {
+      "model": "TF-IDF",
+      "locale": "hi-IN",
+      "samples": 2735,
+      "auroc": 0.825211,
+      "aupr_oos": 0.415246,
+      "oos_precision": 0.42906,
+      "oos_recall": 0.548035,
+      "oos_f1": 0.481304,
+      "known_coverage": 0.853316,
+      "selective_known_accuracy": 0.900154
+    },
+    {
+      "model": "TF-IDF",
+      "locale": "kn-IN",
+      "samples": 2735,
+      "auroc": 0.84971,
+      "aupr_oos": 0.461512,
+      "oos_precision": 0.440678,
+      "oos_recall": 0.681223,
+      "oos_f1": 0.535163,
+      "known_coverage": 0.826087,
+      "selective_known_accuracy": 0.898458
+    },
+    {
+      "model": "Weighted XLM-R",
+      "locale": "en-US",
+      "samples": 2735,
+      "auroc": 0.851053,
+      "aupr_oos": 0.458967,
+      "oos_precision": 0.502315,
+      "oos_recall": 0.473799,
+      "oos_f1": 0.48764,
+      "known_coverage": 0.905578,
+      "selective_known_accuracy": 0.92483
+    },
+    {
+      "model": "Weighted XLM-R",
+      "locale": "hi-IN",
+      "samples": 2735,
+      "auroc": 0.813546,
+      "aupr_oos": 0.399319,
+      "oos_precision": 0.444976,
+      "oos_recall": 0.406114,
+      "oos_f1": 0.424658,
+      "known_coverage": 0.898112,
+      "selective_known_accuracy": 0.906601
+    },
+    {
+      "model": "Weighted XLM-R",
+      "locale": "kn-IN",
+      "samples": 2735,
+      "auroc": 0.787178,
+      "aupr_oos": 0.362819,
+      "oos_precision": 0.434783,
+      "oos_recall": 0.414847,
+      "oos_f1": 0.424581,
+      "known_coverage": 0.891524,
+      "selective_known_accuracy": 0.881773
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "locale": "en-US",
+      "samples": 2735,
+      "auroc": 0.843262,
+      "aupr_oos": 0.46016,
+      "oos_precision": 0.459538,
+      "oos_recall": 0.694323,
+      "oos_f1": 0.553043,
+      "known_coverage": 0.835749,
+      "selective_known_accuracy": 0.959012
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "locale": "hi-IN",
+      "samples": 2735,
+      "auroc": 0.798109,
+      "aupr_oos": 0.393123,
+      "oos_precision": 0.400291,
+      "oos_recall": 0.600437,
+      "oos_f1": 0.480349,
+      "known_coverage": 0.81906,
+      "selective_known_accuracy": 0.945845
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "locale": "kn-IN",
+      "samples": 2735,
+      "auroc": 0.79786,
+      "aupr_oos": 0.380394,
+      "oos_precision": 0.37707,
+      "oos_recall": 0.646288,
+      "oos_f1": 0.476267,
+      "known_coverage": 0.785244,
+      "selective_known_accuracy": 0.930089
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "en-US",
+      "samples": 2735,
+      "auroc": 0.860958,
+      "aupr_oos": 0.462162,
+      "oos_precision": 0.480607,
+      "oos_recall": 0.622271,
+      "oos_f1": 0.542341,
+      "known_coverage": 0.864734,
+      "selective_known_accuracy": 0.94261
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "hi-IN",
+      "samples": 2735,
+      "auroc": 0.829303,
+      "aupr_oos": 0.416378,
+      "oos_precision": 0.442834,
+      "oos_recall": 0.600437,
+      "oos_f1": 0.509731,
+      "known_coverage": 0.848046,
+      "selective_known_accuracy": 0.931642
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "kn-IN",
+      "samples": 2735,
+      "auroc": 0.807978,
+      "aupr_oos": 0.376627,
+      "oos_precision": 0.389458,
+      "oos_recall": 0.580786,
+      "oos_f1": 0.466258,
+      "known_coverage": 0.816864,
+      "selective_known_accuracy": 0.915591
+    }
+  ],
+  "frozen_temperatures": {
+    "TF-IDF": 0.739813,
+    "Weighted XLM-R": 0.920394,
+    "Noise-Augmented XLM-R": 0.96551,
+    "Combined-Augmented XLM-R": 0.9661
+  },
+  "frozen_thresholds": {
+    "TF-IDF": 0.536,
+    "Weighted XLM-R": 0.567,
+    "Noise-Augmented XLM-R": 0.797,
+    "Combined-Augmented XLM-R": 0.728
+  },
+  "post_test_tuning_performed": false
+}

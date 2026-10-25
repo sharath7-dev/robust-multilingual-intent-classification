@@ -78,10 +78,11 @@ Datasets, secrets, environments, and model checkpoints are excluded from Git.
 - [x] Leakage-safe OOS split
 - [x] TF-IDF validation baseline
 - [x] XLM-R multilingual model
-- [ ] Noise robustness evaluation
-- [ ] Transliteration diagnostic
-- [ ] OOS detection and calibration
-- [ ] Final test evaluation
+- [x] Noise robustness evaluation
+- [x] Transliteration diagnostic
+- [x] OOS detection and calibration
+- [x] Combined noise and transliteration augmentation
+- [x] Final test evaluation
 - [ ] Professional interface
 
 Only verified experimental results are reported.
@@ -169,3 +170,40 @@ Combined-model OOS F1 is 0.2740 for English, 0.2991 for Hindi, and 0.2651 for Ka
 
 ![Calibration and unseen-intent results](results/figures/oos_calibration_summary.png)
 <!-- OOS_CALIBRATION_RESULTS_END -->
+
+<!-- FINAL_TEST_RESULTS_START -->
+## Final frozen test results
+
+The test protocol, model selection, calibration temperatures, and unseen-intent
+thresholds were frozen before evaluating the test set. No post-test tuning was
+performed.
+
+### Main results
+
+| Model | Clean Macro-F1 | 15% Noise Macro-F1 | Romanized Hindi + Kannada Macro-F1 | OOS AUROC | OOS F1 |
+|---|---:|---:|---:|---:|---:|
+| TF-IDF | 0.8048 | 0.7720 | 0.0718 | **0.8439** | **0.5122** |
+| Weighted XLM-R | 0.7903 | 0.7484 | 0.1064 | 0.8174 | 0.4457 |
+| Noise-Augmented XLM-R | 0.8144 | 0.7808 | 0.1299 | 0.8137 | 0.5025 |
+| **Combined-Augmented XLM-R** | **0.8205** | **0.7883** | **0.5038** | 0.8329 | 0.5050 |
+
+The Combined-Augmented XLM-R achieved the strongest clean, spelling-noise, and
+transliterated-input Macro-F1. The TF-IDF baseline achieved the best frozen-test
+unseen-intent AUROC and OOS F1, showing that the best intent classifier was not
+automatically the best rejection model.
+
+![Final frozen test results](results/figures/final_test_summary.png)
+
+### Combined model by language
+
+| Language | Clean Macro-F1 | 15% Noise Macro-F1 | Romanized Macro-F1 | OOS F1 |
+|---|---:|---:|---:|---:|
+| English | 0.8518 | 0.7978 | 0.8518 | 0.5423 |
+| Hindi | 0.8145 | 0.8019 | 0.5341 | 0.5097 |
+| Kannada | 0.7959 | 0.7664 | 0.4681 | 0.4663 |
+
+Synthetic Romanization remains substantially harder than native-script input,
+especially for Kannada. These results apply to the controlled MASSIVE 1.1
+evaluation and should not be interpreted as performance on naturally typed
+code-mixed or Romanized user data.
+<!-- FINAL_TEST_RESULTS_END -->

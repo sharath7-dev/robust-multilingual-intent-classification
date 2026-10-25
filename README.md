@@ -153,3 +153,37 @@ This experiment uses deterministic scholarly transliteration followed by ASCII s
 
 ![Transliteration robustness](results/figures/transliteration_robustness.png)
 <!-- TRANSLITERATION_RESULTS_END -->
+
+<!-- OOS_CALIBRATION_RESULTS_START -->
+## Phase 5 — Calibration and unseen-intent rejection
+
+The validation data was divided into separate calibration and evaluation subsets using a deterministic SHA-256 split grouped by parallel example ID. This prevents translated versions of the same request from appearing in both subsets.
+
+Temperature scaling was fitted using calibration-known examples. Confidence thresholds were selected using calibration known and OOS examples, then measured on the held-out validation evaluation subset. The final test set remained untouched.
+
+One configured known intent, `audio_volume_other`, has no examples in the official validation partition. Validation classification metrics therefore cover the 49 known intents present in that partition while the trained models retain all 50 output classes.
+
+### Calibration results
+
+| Model | Temperature | ECE before | ECE after | NLL before | NLL after |
+|---|---:|---:|---:|---:|---:|
+| TF-IDF | 0.7398 | 0.0938 | 0.0184 | 0.6917 | 0.6381 |
+| Weighted XLM-R | 0.9204 | 0.0319 | 0.0266 | 0.6223 | 0.6177 |
+| Noise-Augmented XLM-R | 0.9655 | 0.0187 | 0.0259 | 0.5761 | 0.5757 |
+
+Temperature scaling substantially improves TF-IDF calibration and slightly improves weighted XLM-R. The augmented XLM-R was already well calibrated, and its ECE becomes slightly worse after scaling.
+
+### Unseen-intent detection
+
+| Model | Threshold | AUROC | AUPR-OOS | OOS F1 | Known coverage | Accepted-known accuracy |
+|---|---:|---:|---:|---:|---:|---:|
+| TF-IDF | 0.536 | 0.6717 | 0.1524 | 0.1920 | 0.8535 | 0.9113 |
+| Weighted XLM-R | 0.567 | 0.6693 | 0.1739 | 0.2079 | 0.9016 | 0.9044 |
+| Noise-Augmented XLM-R | 0.797 | 0.6960 | 0.2050 | 0.2788 | 0.8145 | 0.9382 |
+
+The augmented XLM-R provides the strongest unseen-intent detection and the highest accuracy on accepted known inputs. However, its OOS F1 remains only 0.2788, and achieving high OOS recall produces many false rejections. Maximum confidence is therefore useful for selective prediction but is not a reliable standalone unseen-intent detector.
+
+Per-language OOS F1 for the augmented XLM-R is 0.2811 for English, 0.3106 for Hindi, and 0.2454 for Kannada.
+
+![Calibration and unseen-intent results](results/figures/oos_calibration_summary.png)
+<!-- OOS_CALIBRATION_RESULTS_END -->

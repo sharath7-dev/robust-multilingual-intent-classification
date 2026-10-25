@@ -1,0 +1,23 @@
+{
+  "method": "maximum calibrated class probability",
+  "oos_score": "1 - maximum calibrated probability",
+  "validation_partition_method": "SHA-256 deterministic split grouped by parallel ID",
+  "random_seed": 42,
+  "calibration_rows": {
+    "known": 2343,
+    "oos": 291
+  },
+  "evaluation_rows": {
+    "known": 2286,
+    "oos": 249
+  },
+  "temperature_fitting_data": "calibration-known examples only",
+  "threshold_selection_data": "calibration known and OOS examples",
+  "threshold_objective": "maximize binary known-vs-OOS macro-F1",
+  "threshold_grid_points": 1001,
+  "ece_bins": 15,
+  "configured_known_intents": 50,
+  "known_intents_present_in_validation": 49,
+  "known_intent_absent_from_validation": "audio_volume_other",
+  "test_set_used": false
+}

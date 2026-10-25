@@ -1,0 +1,30 @@
+{
+  "base_model": "FacebookAI/xlm-roberta-base",
+  "random_seed": 42,
+  "clean_training_rows": 26193,
+  "added_noisy_rows": 5967,
+  "final_training_rows": 32160,
+  "added_noisy_rows_per_language": {
+    "en-US": 1989,
+    "hi-IN": 1989,
+    "kn-IN": 1989
+  },
+  "training_noise_rate": 0.1,
+  "augmentation_strategy": "clean training set plus balanced changed noisy copies",
+  "noise_operations": [
+    "single_grapheme_deletion",
+    "adjacent_grapheme_transposition"
+  ],
+  "class_weighting": "normalized square-root inverse class frequency",
+  "epochs": 2,
+  "learning_rate": 2e-05,
+  "train_batch_size": 16,
+  "evaluation_batch_size": 32,
+  "weight_decay": 0.01,
+  "warmup_steps": 402,
+  "maximum_token_length": 64,
+  "fp16": true,
+  "selection_metric": "validation_macro_f1",
+  "validation_only": true,
+  "test_set_used": false
+}

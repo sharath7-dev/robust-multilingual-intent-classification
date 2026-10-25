@@ -1,0 +1,79 @@
+{
+  "protocol_version": 1,
+  "frozen_on": "2026-10-25",
+  "selection_basis": "validation data only",
+  "primary_final_model": "Combined-Augmented XLM-R",
+  "comparison_models": [
+    "TF-IDF",
+    "Weighted XLM-R",
+    "Noise-Augmented XLM-R",
+    "Combined-Augmented XLM-R"
+  ],
+  "known_intents": 50,
+  "test_known_rows": 6831,
+  "test_oos_rows": 1374,
+  "test_oos_intents": [
+    "email_query",
+    "email_sendemail",
+    "play_music",
+    "qa_stock",
+    "transport_taxi"
+  ],
+  "evaluation_conditions": {
+    "clean_known": [
+      "accuracy",
+      "macro_f1",
+      "per_language_accuracy",
+      "per_language_macro_f1"
+    ],
+    "synthetic_spelling_noise": {
+      "rates": [
+        0.05,
+        0.1,
+        0.15
+      ],
+      "metrics": [
+        "accuracy",
+        "macro_f1",
+        "macro_f1_drop"
+      ]
+    },
+    "synthetic_transliteration": {
+      "languages": [
+        "hi-IN",
+        "kn-IN"
+      ],
+      "english_control": true,
+      "metrics": [
+        "accuracy",
+        "macro_f1",
+        "macro_f1_drop"
+      ]
+    },
+    "unseen_intents": {
+      "score": "1 - maximum temperature-scaled class probability",
+      "metrics": [
+        "auroc",
+        "aupr_oos",
+        "oos_f1",
+        "known_coverage",
+        "selective_known_accuracy"
+      ]
+    }
+  },
+  "frozen_temperatures": {
+    "TF-IDF": 0.739813,
+    "Weighted XLM-R": 0.920394,
+    "Noise-Augmented XLM-R": 0.96551,
+    "Combined-Augmented XLM-R": 0.9661
+  },
+  "frozen_confidence_thresholds": {
+    "TF-IDF": 0.536,
+    "Weighted XLM-R": 0.567,
+    "Noise-Augmented XLM-R": 0.797,
+    "Combined-Augmented XLM-R": 0.728
+  },
+  "random_seed": 42,
+  "model_or_threshold_tuning_after_test": false,
+  "test_set_evaluated_at_freeze_time": false
+}

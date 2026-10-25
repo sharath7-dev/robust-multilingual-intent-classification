@@ -1,0 +1,28 @@
+{
+  "method": "synthetic deterministic transliteration",
+  "library": "indic-transliteration",
+  "library_version": "2.3.82",
+  "source_scripts": {
+    "hi-IN": "Devanagari",
+    "kn-IN": "Kannada"
+  },
+  "target_scheme": "ITRANS",
+  "normalization": [
+    "Unicode NFKD normalization",
+    "remove combining accents",
+    "convert to ASCII",
+    "lowercase",
+    "remove specialist transliteration symbols",
+    "collapse whitespace"
+  ],
+  "english_handling": "unchanged control",
+  "validation_rows": 4629,
+  "changed_rows": {
+    "en-US": 0,
+    "hi-IN": 1543,
+    "kn-IN": 1542
+  },
+  "native_script_rows_remaining": 0,
+  "limitation": "Synthetic scholarly transliteration is not equivalent to naturally typed Romanized user text.",
+  "test_set_used": false
+}

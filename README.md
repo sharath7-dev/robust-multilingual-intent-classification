@@ -131,3 +131,25 @@ These experiments use controlled synthetic perturbations and do not establish pe
 
 ![Spelling-noise robustness](results/figures/spelling_noise_robustness.png)
 <!-- SPELLING_NOISE_RESULTS_END -->
+
+<!-- TRANSLITERATION_RESULTS_START -->
+## Phase 4 — Synthetic transliteration robustness
+
+Hindi and Kannada validation utterances were converted from their native scripts into simplified Latin text using `indic-transliteration` 2.3.82 with the ITRANS scheme and deterministic ASCII normalization. English was retained unchanged as a control.
+
+The final test set was not evaluated.
+
+### Macro-F1 results
+
+| Model | Hindi native | Hindi Romanized | Kannada native | Kannada Romanized | Combined native | Combined Romanized |
+|---|---:|---:|---:|---:|---:|---:|
+| TF-IDF | 0.8140 | 0.0769 | 0.8043 | 0.0532 | 0.8121 | 0.0700 |
+| Weighted XLM-R | 0.7770 | 0.1282 | 0.7443 | 0.0645 | 0.7552 | 0.1045 |
+| Noise-Augmented XLM-R | 0.8147 | 0.1503 | 0.8064 | 0.0897 | 0.8101 | 0.1246 |
+
+All three models show severe performance degradation on synthetic Romanized Hindi and Kannada. The noise-augmented XLM-R obtains the strongest Romanized macro-F1, but its combined score remains only 0.1246. English control results remain unchanged, supporting that the degradation is associated with the script transformation rather than an evaluation-order error.
+
+This experiment uses deterministic scholarly transliteration followed by ASCII simplification. It does not represent the full variation of naturally typed Romanized Hindi or Kannada and should be interpreted as a controlled script-shift stress test.
+
+![Transliteration robustness](results/figures/transliteration_robustness.png)
+<!-- TRANSLITERATION_RESULTS_END -->

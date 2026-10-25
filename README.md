@@ -10,6 +10,31 @@ Languages:
 - Hindi (`hi-IN`)
 - Kannada (`kn-IN`)
 
+<!-- REPRODUCIBILITY_START -->
+## Setup and reproducibility
+
+The verified experiments were run in Google Colab with Python 3.13.16 and
+a Tesla T4 GPU. A GPU is strongly recommended for XLM-R training and inference.
+
+1. Clone this repository.
+2. Install the verified dependencies:
+
+       pip install -r requirements.txt
+
+3. Open and run:
+
+   `notebooks/multilingual_intent_robustness_experiments.ipynb`
+
+The notebook downloads MASSIVE 1.1, reconstructs the frozen intent splits,
+and saves large trained artifacts outside Git tracking.
+
+See [`docs/model_artifacts.md`](docs/model_artifacts.md) for the verified
+model locations, sizes, availability limitations, and expected structure.
+
+Exact experimental settings are stored in `configs/`, while reported
+validation and frozen-test outputs are stored in `results/metrics/`.
+<!-- REPRODUCIBILITY_END -->
+
 ## Dataset
 
 The project uses the public [MASSIVE 1.1 dataset](https://github.com/alexa/massive), licensed under CC BY 4.0. Dataset files are downloaded when required and are not stored in this repository.

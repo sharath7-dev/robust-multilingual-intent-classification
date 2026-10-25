@@ -85,3 +85,42 @@ Datasets, secrets, environments, and model checkpoints are excluded from Git.
 - [ ] Professional interface
 
 Only verified experimental results are reported.
+
+<!-- SPELLING_NOISE_RESULTS_START -->
+## Phase 3 — Synthetic spelling-noise robustness
+
+We evaluated the TF-IDF baseline and class-weighted XLM-R on the known-intent validation set under deterministic Unicode-aware spelling noise.
+
+Noise operations:
+
+- Single-grapheme deletion
+- Adjacent-grapheme transposition
+- Rates of 5%, 10%, and 15% per eligible word
+- Fixed random seed: 42
+- Test set remained untouched
+
+Changed validation utterances:
+
+| Noise rate | Changed rows | Percentage |
+|---:|---:|---:|
+| 5% | 781 / 4,629 | 16.87% |
+| 10% | 1,463 / 4,629 | 31.61% |
+| 15% | 2,004 / 4,629 | 43.29% |
+
+Overall validation results:
+
+| Model | Noise rate | Accuracy | Macro-F1 | Macro-F1 drop |
+|---|---:|---:|---:|---:|
+| TF-IDF | 0% | 0.8369 | 0.8210 | 0.0000 |
+| TF-IDF | 5% | 0.8283 | 0.8133 | 0.0076 |
+| TF-IDF | 10% | 0.8177 | 0.7958 | 0.0252 |
+| TF-IDF | 15% | 0.8062 | 0.7937 | 0.0273 |
+| Weighted XLM-R | 0% | 0.8522 | 0.7667 | 0.0000 |
+| Weighted XLM-R | 5% | 0.8365 | 0.7571 | 0.0096 |
+| Weighted XLM-R | 10% | 0.8220 | 0.7383 | 0.0284 |
+| Weighted XLM-R | 15% | 0.8075 | 0.7253 | 0.0413 |
+
+Both models degrade under spelling noise. TF-IDF retains the stronger macro-F1, while weighted XLM-R retains slightly higher accuracy. These results measure robustness to controlled synthetic perturbations and should not be interpreted as performance on naturally occurring user typos.
+
+![Spelling-noise robustness](results/figures/spelling_noise_robustness.png)
+<!-- SPELLING_NOISE_RESULTS_END -->

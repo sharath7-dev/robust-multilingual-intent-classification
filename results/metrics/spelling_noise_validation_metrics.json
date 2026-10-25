@@ -1,0 +1,319 @@
+{
+  "dataset": "MASSIVE 1.1",
+  "languages": [
+    "en-US",
+    "hi-IN",
+    "kn-IN"
+  ],
+  "validation_samples": 4629,
+  "noise_configuration": {
+    "name": "synthetic_spelling_noise",
+    "random_seed": 42,
+    "noise_rates": [
+      0.05,
+      0.1,
+      0.15
+    ],
+    "selection_unit": "eligible Unicode word",
+    "minimum_graphemes": 3,
+    "operations": [
+      "single_grapheme_deletion",
+      "adjacent_grapheme_transposition"
+    ],
+    "operation_selection": "uniform_random",
+    "grapheme_library": "regex_X",
+    "seed_components": [
+      "random_seed",
+      "locale",
+      "example_id"
+    ],
+    "evaluation_split": "validation_known",
+    "test_set_used": false
+  },
+  "changed_rows": {
+    "0.05": 781,
+    "0.1": 1463,
+    "0.15": 2004
+  },
+  "overall_results": [
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.0,
+      "accuracy": 0.836898,
+      "macro_f1": 0.820967,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.0,
+      "accuracy": 0.852236,
+      "macro_f1": 0.766656,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.05,
+      "accuracy": 0.828257,
+      "macro_f1": 0.813347,
+      "macro_f1_drop": 0.007621
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.05,
+      "accuracy": 0.836466,
+      "macro_f1": 0.757083,
+      "macro_f1_drop": 0.009573
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.1,
+      "accuracy": 0.817671,
+      "macro_f1": 0.795795,
+      "macro_f1_drop": 0.025172
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.1,
+      "accuracy": 0.821992,
+      "macro_f1": 0.738293,
+      "macro_f1_drop": 0.028363
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.15,
+      "accuracy": 0.806222,
+      "macro_f1": 0.79365,
+      "macro_f1_drop": 0.027317
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.15,
+      "accuracy": 0.807518,
+      "macro_f1": 0.725319,
+      "macro_f1_drop": 0.041337
+    }
+  ],
+  "per_language_results": [
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.859365,
+      "macro_f1": 0.839404,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.830849,
+      "macro_f1": 0.814015,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.82048,
+      "macro_f1": 0.804321,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.847051,
+      "macro_f1": 0.828001,
+      "macro_f1_drop": 0.011403
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.82372,
+      "macro_f1": 0.808345,
+      "macro_f1_drop": 0.00567
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.813999,
+      "macro_f1": 0.798484,
+      "macro_f1_drop": 0.005837
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.836034,
+      "macro_f1": 0.810267,
+      "macro_f1_drop": 0.029137
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.813999,
+      "macro_f1": 0.796133,
+      "macro_f1_drop": 0.017882
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.802981,
+      "macro_f1": 0.771923,
+      "macro_f1_drop": 0.032398
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.82372,
+      "macro_f1": 0.818743,
+      "macro_f1_drop": 0.020661
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.804925,
+      "macro_f1": 0.788404,
+      "macro_f1_drop": 0.025611
+    },
+    {
+      "model": "TF-IDF",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.790019,
+      "macro_f1": 0.761615,
+      "macro_f1_drop": 0.042706
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.871679,
+      "macro_f1": 0.802662,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.849644,
+      "macro_f1": 0.777001,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.835386,
+      "macro_f1": 0.744311,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.852236,
+      "macro_f1": 0.793414,
+      "macro_f1_drop": 0.009248
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.835386,
+      "macro_f1": 0.763967,
+      "macro_f1_drop": 0.013035
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.821776,
+      "macro_f1": 0.737628,
+      "macro_f1_drop": 0.006683
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.830201,
+      "macro_f1": 0.757426,
+      "macro_f1_drop": 0.045236
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.826312,
+      "macro_f1": 0.751866,
+      "macro_f1_drop": 0.025135
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.809462,
+      "macro_f1": 0.72792,
+      "macro_f1_drop": 0.016391
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.810758,
+      "macro_f1": 0.738633,
+      "macro_f1_drop": 0.064029
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.812054,
+      "macro_f1": 0.738635,
+      "macro_f1_drop": 0.038366
+    },
+    {
+      "model": "Weighted XLM-R",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.799741,
+      "macro_f1": 0.720058,
+      "macro_f1_drop": 0.024252
+    }
+  ],
+  "clean_scores_reproduced": {
+    "tfidf_macro_f1": true,
+    "weighted_xlmr_macro_f1": true
+  },
+  "test_set_evaluated": false
+}

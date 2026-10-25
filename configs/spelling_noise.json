@@ -1,0 +1,24 @@
+{
+  "name": "synthetic_spelling_noise",
+  "random_seed": 42,
+  "noise_rates": [
+    0.05,
+    0.1,
+    0.15
+  ],
+  "selection_unit": "eligible Unicode word",
+  "minimum_graphemes": 3,
+  "operations": [
+    "single_grapheme_deletion",
+    "adjacent_grapheme_transposition"
+  ],
+  "operation_selection": "uniform_random",
+  "grapheme_library": "regex_X",
+  "seed_components": [
+    "random_seed",
+    "locale",
+    "example_id"
+  ],
+  "evaluation_split": "validation_known",
+  "test_set_used": false
+}

@@ -1,0 +1,269 @@
+{
+  "dataset": "MASSIVE 1.1",
+  "model": "Combined-Augmented XLM-R",
+  "training_time_minutes": 13.0,
+  "best_clean_validation_macro_f1": 0.826658,
+  "spelling_noise_results": [
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "accuracy": 0.862173,
+      "macro_f1": 0.826095,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "accuracy": 0.850508,
+      "macro_f1": 0.807337,
+      "macro_f1_drop": 0.018758
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "accuracy": 0.839058,
+      "macro_f1": 0.793125,
+      "macro_f1_drop": 0.032969
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "accuracy": 0.82696,
+      "macro_f1": 0.778936,
+      "macro_f1_drop": 0.047158
+    }
+  ],
+  "spelling_noise_per_language": [
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.882048,
+      "macro_f1": 0.862518,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.860661,
+      "macro_f1": 0.809447,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.843811,
+      "macro_f1": 0.796502,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.867142,
+      "macro_f1": 0.8319,
+      "macro_f1_drop": 0.030618
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.849644,
+      "macro_f1": 0.79946,
+      "macro_f1_drop": 0.009987
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.834738,
+      "macro_f1": 0.784777,
+      "macro_f1_drop": 0.011725
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.852884,
+      "macro_f1": 0.813792,
+      "macro_f1_drop": 0.048725
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.84057,
+      "macro_f1": 0.790784,
+      "macro_f1_drop": 0.018664
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.82372,
+      "macro_f1": 0.76763,
+      "macro_f1_drop": 0.028872
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.836034,
+      "macro_f1": 0.795443,
+      "macro_f1_drop": 0.067074
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.832145,
+      "macro_f1": 0.784999,
+      "macro_f1_drop": 0.024448
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.812703,
+      "macro_f1": 0.749763,
+      "macro_f1_drop": 0.046739
+    }
+  ],
+  "transliteration_results": [
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "all_languages",
+      "samples": 4629,
+      "clean_accuracy": 0.862173,
+      "transliterated_accuracy": 0.678116,
+      "clean_macro_f1": 0.826095,
+      "transliterated_macro_f1": 0.629833,
+      "macro_f1_drop": 0.196262
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "english_control",
+      "samples": 1543,
+      "clean_accuracy": 0.882048,
+      "transliterated_accuracy": 0.882048,
+      "clean_macro_f1": 0.862518,
+      "transliterated_macro_f1": 0.862518,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "hindi_transliterated",
+      "samples": 1543,
+      "clean_accuracy": 0.860661,
+      "transliterated_accuracy": 0.614388,
+      "clean_macro_f1": 0.809447,
+      "transliterated_macro_f1": 0.522825,
+      "macro_f1_drop": 0.286622
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "kannada_transliterated",
+      "samples": 1543,
+      "clean_accuracy": 0.843811,
+      "transliterated_accuracy": 0.537913,
+      "clean_macro_f1": 0.796502,
+      "transliterated_macro_f1": 0.473642,
+      "macro_f1_drop": 0.32286
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "hindi_kannada_combined",
+      "samples": 3086,
+      "clean_accuracy": 0.852236,
+      "transliterated_accuracy": 0.57615,
+      "clean_macro_f1": 0.806408,
+      "transliterated_macro_f1": 0.499778,
+      "macro_f1_drop": 0.30663
+    }
+  ],
+  "temperature_result": {
+    "model": "Combined-Augmented XLM-R",
+    "temperature": 0.9661,
+    "evaluation_nll_before": 0.582093,
+    "evaluation_nll_after": 0.580918,
+    "evaluation_ece_before": 0.018924,
+    "evaluation_ece_after": 0.022744,
+    "evaluation_accuracy": 0.853456
+  },
+  "overall_oos_result": {
+    "model": "Combined-Augmented XLM-R",
+    "threshold": 0.728,
+    "calibration_binary_macro_f1": 0.637265,
+    "evaluation_auroc": 0.703285,
+    "evaluation_aupr_oos": 0.184793,
+    "evaluation_fpr_at_95_tpr": 0.818898,
+    "evaluation_binary_accuracy": 0.800394,
+    "evaluation_balanced_accuracy": 0.619141,
+    "evaluation_binary_macro_f1": 0.58168,
+    "oos_precision": 0.216336,
+    "oos_recall": 0.393574,
+    "oos_f1": 0.279202,
+    "known_coverage": 0.844707,
+    "selective_known_accuracy": 0.930606
+  },
+  "per_language_oos_results": [
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "en-US",
+      "samples": 845,
+      "threshold": 0.728,
+      "auroc": 0.687522,
+      "aupr_oos": 0.181274,
+      "binary_macro_f1": 0.582941,
+      "oos_precision": 0.220588,
+      "oos_recall": 0.361446,
+      "oos_f1": 0.273973,
+      "known_coverage": 0.860892,
+      "selective_known_accuracy": 0.942073
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "hi-IN",
+      "samples": 845,
+      "threshold": 0.728,
+      "auroc": 0.726165,
+      "aupr_oos": 0.200997,
+      "binary_macro_f1": 0.593254,
+      "oos_precision": 0.231788,
+      "oos_recall": 0.421687,
+      "oos_f1": 0.299145,
+      "known_coverage": 0.847769,
+      "selective_known_accuracy": 0.928793
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "kn-IN",
+      "samples": 845,
+      "threshold": 0.728,
+      "auroc": 0.696661,
+      "aupr_oos": 0.198719,
+      "binary_macro_f1": 0.569033,
+      "oos_precision": 0.198795,
+      "oos_recall": 0.39759,
+      "oos_f1": 0.26506,
+      "known_coverage": 0.825459,
+      "selective_known_accuracy": 0.920509
+    }
+  ],
+  "drive_model_location": "MyDrive/robust_multilingual_intent/artifacts/models/xlmr_combined_augmented_final",
+  "test_set_evaluated": false
+}

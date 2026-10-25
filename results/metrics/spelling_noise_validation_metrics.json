@@ -91,6 +91,62 @@
       "accuracy": 0.807518,
       "macro_f1": 0.725319,
       "macro_f1_drop": 0.041337
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "accuracy": 0.863469,
+      "macro_f1": 0.82214,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "accuracy": 0.851588,
+      "macro_f1": 0.811121,
+      "macro_f1_drop": 0.011019
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "accuracy": 0.840354,
+      "macro_f1": 0.781659,
+      "macro_f1_drop": 0.040481
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "accuracy": 0.828041,
+      "macro_f1": 0.768545,
+      "macro_f1_drop": 0.053595
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "accuracy": 0.862173,
+      "macro_f1": 0.826095,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "accuracy": 0.850508,
+      "macro_f1": 0.807337,
+      "macro_f1_drop": 0.018758
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "accuracy": 0.839058,
+      "macro_f1": 0.793125,
+      "macro_f1_drop": 0.032969
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "accuracy": 0.82696,
+      "macro_f1": 0.778936,
+      "macro_f1_drop": 0.047158
     }
   ],
   "per_language_results": [
@@ -309,6 +365,222 @@
       "accuracy": 0.799741,
       "macro_f1": 0.720058,
       "macro_f1_drop": 0.024252
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.880752,
+      "macro_f1": 0.845906,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.861309,
+      "macro_f1": 0.814711,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.848347,
+      "macro_f1": 0.806362,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.868438,
+      "macro_f1": 0.834435,
+      "macro_f1_drop": 0.011472
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.852884,
+      "macro_f1": 0.807679,
+      "macro_f1_drop": 0.007032
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.833441,
+      "macro_f1": 0.79258,
+      "macro_f1_drop": 0.013782
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.856124,
+      "macro_f1": 0.816386,
+      "macro_f1_drop": 0.02952
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.844459,
+      "macro_f1": 0.779315,
+      "macro_f1_drop": 0.035396
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.82048,
+      "macro_f1": 0.781371,
+      "macro_f1_drop": 0.024991
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.836682,
+      "macro_f1": 0.79405,
+      "macro_f1_drop": 0.051856
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.836034,
+      "macro_f1": 0.772449,
+      "macro_f1_drop": 0.042262
+    },
+    {
+      "model": "Noise-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.811406,
+      "macro_f1": 0.772221,
+      "macro_f1_drop": 0.034141
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.882048,
+      "macro_f1": 0.862518,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.860661,
+      "macro_f1": 0.809447,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.0,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.843811,
+      "macro_f1": 0.796502,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.867142,
+      "macro_f1": 0.8319,
+      "macro_f1_drop": 0.030618
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.849644,
+      "macro_f1": 0.79946,
+      "macro_f1_drop": 0.009987
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.05,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.834738,
+      "macro_f1": 0.784777,
+      "macro_f1_drop": 0.011725
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.852884,
+      "macro_f1": 0.813792,
+      "macro_f1_drop": 0.048725
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.84057,
+      "macro_f1": 0.790784,
+      "macro_f1_drop": 0.018664
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.1,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.82372,
+      "macro_f1": 0.76763,
+      "macro_f1_drop": 0.028872
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "en-US",
+      "samples": 1543,
+      "accuracy": 0.836034,
+      "macro_f1": 0.795443,
+      "macro_f1_drop": 0.067074
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "hi-IN",
+      "samples": 1543,
+      "accuracy": 0.832145,
+      "macro_f1": 0.784999,
+      "macro_f1_drop": 0.024448
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "noise_rate": 0.15,
+      "locale": "kn-IN",
+      "samples": 1543,
+      "accuracy": 0.812703,
+      "macro_f1": 0.749763,
+      "macro_f1_drop": 0.046739
     }
   ],
   "clean_scores_reproduced": {

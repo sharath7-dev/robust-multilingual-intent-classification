@@ -156,6 +156,56 @@
       "clean_macro_f1": 0.810076,
       "transliterated_macro_f1": 0.124617,
       "macro_f1_drop": 0.68546
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "all_languages",
+      "samples": 4629,
+      "clean_accuracy": 0.862173,
+      "transliterated_accuracy": 0.678116,
+      "clean_macro_f1": 0.826095,
+      "transliterated_macro_f1": 0.629833,
+      "macro_f1_drop": 0.196262
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "english_control",
+      "samples": 1543,
+      "clean_accuracy": 0.882048,
+      "transliterated_accuracy": 0.882048,
+      "clean_macro_f1": 0.862518,
+      "transliterated_macro_f1": 0.862518,
+      "macro_f1_drop": 0.0
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "hindi_transliterated",
+      "samples": 1543,
+      "clean_accuracy": 0.860661,
+      "transliterated_accuracy": 0.614388,
+      "clean_macro_f1": 0.809447,
+      "transliterated_macro_f1": 0.522825,
+      "macro_f1_drop": 0.286622
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "kannada_transliterated",
+      "samples": 1543,
+      "clean_accuracy": 0.843811,
+      "transliterated_accuracy": 0.537913,
+      "clean_macro_f1": 0.796502,
+      "transliterated_macro_f1": 0.473642,
+      "macro_f1_drop": 0.32286
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "group": "hindi_kannada_combined",
+      "samples": 3086,
+      "clean_accuracy": 0.852236,
+      "transliterated_accuracy": 0.57615,
+      "clean_macro_f1": 0.806408,
+      "transliterated_macro_f1": 0.499778,
+      "macro_f1_drop": 0.30663
     }
   ],
   "english_control_unchanged": true,

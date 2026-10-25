@@ -27,6 +27,15 @@
       "evaluation_ece_before": 0.018676,
       "evaluation_ece_after": 0.025947,
       "evaluation_accuracy": 0.857393
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "temperature": 0.9661,
+      "evaluation_nll_before": 0.582093,
+      "evaluation_nll_after": 0.580918,
+      "evaluation_ece_before": 0.018924,
+      "evaluation_ece_after": 0.022744,
+      "evaluation_accuracy": 0.853456
     }
   ],
   "overall_oos_results": [
@@ -77,6 +86,22 @@
       "oos_f1": 0.278772,
       "known_coverage": 0.814523,
       "selective_known_accuracy": 0.938238
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "threshold": 0.728,
+      "calibration_binary_macro_f1": 0.637265,
+      "evaluation_auroc": 0.703285,
+      "evaluation_aupr_oos": 0.184793,
+      "evaluation_fpr_at_95_tpr": 0.818898,
+      "evaluation_binary_accuracy": 0.800394,
+      "evaluation_balanced_accuracy": 0.619141,
+      "evaluation_binary_macro_f1": 0.58168,
+      "oos_precision": 0.216336,
+      "oos_recall": 0.393574,
+      "oos_f1": 0.279202,
+      "known_coverage": 0.844707,
+      "selective_known_accuracy": 0.930606
     }
   ],
   "per_language_oos_results": [
@@ -205,6 +230,48 @@
       "oos_f1": 0.245353,
       "known_coverage": 0.799213,
       "selective_known_accuracy": 0.932677
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "en-US",
+      "samples": 845,
+      "threshold": 0.728,
+      "auroc": 0.687522,
+      "aupr_oos": 0.181274,
+      "binary_macro_f1": 0.582941,
+      "oos_precision": 0.220588,
+      "oos_recall": 0.361446,
+      "oos_f1": 0.273973,
+      "known_coverage": 0.860892,
+      "selective_known_accuracy": 0.942073
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "hi-IN",
+      "samples": 845,
+      "threshold": 0.728,
+      "auroc": 0.726165,
+      "aupr_oos": 0.200997,
+      "binary_macro_f1": 0.593254,
+      "oos_precision": 0.231788,
+      "oos_recall": 0.421687,
+      "oos_f1": 0.299145,
+      "known_coverage": 0.847769,
+      "selective_known_accuracy": 0.928793
+    },
+    {
+      "model": "Combined-Augmented XLM-R",
+      "locale": "kn-IN",
+      "samples": 845,
+      "threshold": 0.728,
+      "auroc": 0.696661,
+      "aupr_oos": 0.198719,
+      "binary_macro_f1": 0.569033,
+      "oos_precision": 0.198795,
+      "oos_recall": 0.39759,
+      "oos_f1": 0.26506,
+      "known_coverage": 0.825459,
+      "selective_known_accuracy": 0.920509
     }
   ],
   "test_set_evaluated": false

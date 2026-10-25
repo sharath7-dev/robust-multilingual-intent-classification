@@ -1,0 +1,37 @@
+{
+  "base_model": "FacebookAI/xlm-roberta-base",
+  "random_seed": 42,
+  "training_rows": {
+    "clean": 26193,
+    "synthetic_spelling_noise": 5967,
+    "synthetic_romanized": 3978,
+    "english_control_copies": 1989,
+    "total": 38127
+  },
+  "rows_per_language": {
+    "en-US": 12709,
+    "hi-IN": 12709,
+    "kn-IN": 12709
+  },
+  "spelling_noise_rate": 0.1,
+  "script_shift_parallel_ids": 1989,
+  "script_shift_id_selection": "SHA-256 deterministic ranking of training IDs",
+  "transliteration": {
+    "library": "indic-transliteration",
+    "version": "2.3.82",
+    "scheme": "ITRANS",
+    "normalization": "lowercase simplified ASCII"
+  },
+  "class_weighting": "normalized square-root inverse class frequency",
+  "epochs": 2,
+  "learning_rate": 2e-05,
+  "train_batch_size": 16,
+  "evaluation_batch_size": 32,
+  "weight_decay": 0.01,
+  "warmup_steps": 477,
+  "maximum_token_length": 64,
+  "fp16": true,
+  "selection_metric": "validation_macro_f1",
+  "validation_or_test_leakage": false,
+  "test_set_used": false
+}

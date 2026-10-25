@@ -89,26 +89,9 @@ Only verified experimental results are reported.
 <!-- SPELLING_NOISE_RESULTS_START -->
 ## Phase 3 — Synthetic spelling-noise robustness
 
-We evaluated three models on the known-intent validation set under deterministic Unicode-aware spelling noise:
+Four models were evaluated under deterministic Unicode-aware spelling noise using single-grapheme deletion and adjacent-grapheme transposition.
 
-- TF-IDF with logistic regression
-- Class-weighted XLM-R
-- Noise-augmented, class-weighted XLM-R
-
-The perturbations use single-grapheme deletion and adjacent-grapheme transposition at rates of 5%, 10%, and 15% per eligible word. All experiments use random seed 42.
-
-### Noise augmentation
-
-The augmented XLM-R was trained using:
-
-- 26,193 clean training examples
-- 5,967 synthetic noisy copies
-- 1,989 noisy copies per language
-- 32,160 total training examples
-- Two training epochs
-- No validation or test examples in training
-
-### Overall validation results
+The final combined model was trained on 38,127 examples: clean training data, balanced spelling-noise copies, balanced Romanized Hindi and Kannada examples, and matching English control copies. Each language contributes exactly 12,709 training rows.
 
 | Model | Noise | Accuracy | Macro-F1 | Drop from clean |
 |---|---:|---:|---:|---:|
@@ -124,10 +107,14 @@ The augmented XLM-R was trained using:
 | Noise-Augmented XLM-R | 5% | 0.8516 | 0.8111 | 0.0110 |
 | Noise-Augmented XLM-R | 10% | 0.8404 | 0.7817 | 0.0405 |
 | Noise-Augmented XLM-R | 15% | 0.8280 | 0.7685 | 0.0536 |
+| Combined-Augmented XLM-R | 0% | 0.8622 | 0.8261 | 0.0000 |
+| Combined-Augmented XLM-R | 5% | 0.8505 | 0.8073 | 0.0188 |
+| Combined-Augmented XLM-R | 10% | 0.8391 | 0.7931 | 0.0330 |
+| Combined-Augmented XLM-R | 15% | 0.8270 | 0.7789 | 0.0472 |
 
-Noise augmentation improves XLM-R's absolute accuracy and macro-F1 at every evaluated noise level. However, the augmented model still degrades relative to its own stronger clean score. TF-IDF retains the highest macro-F1 at 5%, 10%, and 15% noise, while the augmented XLM-R has the highest accuracy.
+The combined model produces the highest clean macro-F1. TF-IDF retains the highest macro-F1 at 5%, 10%, and 15% spelling noise, demonstrating that the classical character-aware baseline remains highly competitive under orthographic corruption.
 
-These experiments use controlled synthetic perturbations and do not establish performance on naturally occurring spelling errors. The final test set remains untouched.
+These results use controlled synthetic perturbations and do not establish performance on naturally occurring typing errors. The final test set remained untouched during model development.
 
 ![Spelling-noise robustness](results/figures/spelling_noise_robustness.png)
 <!-- SPELLING_NOISE_RESULTS_END -->
@@ -135,21 +122,18 @@ These experiments use controlled synthetic perturbations and do not establish pe
 <!-- TRANSLITERATION_RESULTS_START -->
 ## Phase 4 — Synthetic transliteration robustness
 
-Hindi and Kannada validation utterances were converted from their native scripts into simplified Latin text using `indic-transliteration` 2.3.82 with the ITRANS scheme and deterministic ASCII normalization. English was retained unchanged as a control.
-
-The final test set was not evaluated.
-
-### Macro-F1 results
+Hindi and Kannada validation utterances were converted into simplified Latin text using `indic-transliteration` 2.3.82 with deterministic ITRANS-to-ASCII normalization. English was retained unchanged as a control.
 
 | Model | Hindi native | Hindi Romanized | Kannada native | Kannada Romanized | Combined native | Combined Romanized |
 |---|---:|---:|---:|---:|---:|---:|
 | TF-IDF | 0.8140 | 0.0769 | 0.8043 | 0.0532 | 0.8121 | 0.0700 |
 | Weighted XLM-R | 0.7770 | 0.1282 | 0.7443 | 0.0645 | 0.7552 | 0.1045 |
 | Noise-Augmented XLM-R | 0.8147 | 0.1503 | 0.8064 | 0.0897 | 0.8101 | 0.1246 |
+| Combined-Augmented XLM-R | 0.8094 | 0.5228 | 0.7965 | 0.4736 | 0.8064 | 0.4998 |
 
-All three models show severe performance degradation on synthetic Romanized Hindi and Kannada. The noise-augmented XLM-R obtains the strongest Romanized macro-F1, but its combined score remains only 0.1246. English control results remain unchanged, supporting that the degradation is associated with the script transformation rather than an evaluation-order error.
+Without transliteration-aware training, all models fail severely on Romanized Hindi and Kannada. Combined augmentation raises the Hindi-and-Kannada Romanized macro-F1 from the previous best of 0.1246 to 0.4998 while maintaining strong native-script performance.
 
-This experiment uses deterministic scholarly transliteration followed by ASCII simplification. It does not represent the full variation of naturally typed Romanized Hindi or Kannada and should be interpreted as a controlled script-shift stress test.
+Synthetic scholarly transliteration does not capture the full variation of naturally typed Romanized Hindi or Kannada. These results should be interpreted as a controlled script-shift stress test.
 
 ![Transliteration robustness](results/figures/transliteration_robustness.png)
 <!-- TRANSLITERATION_RESULTS_END -->
@@ -157,21 +141,18 @@ This experiment uses deterministic scholarly transliteration followed by ASCII s
 <!-- OOS_CALIBRATION_RESULTS_START -->
 ## Phase 5 — Calibration and unseen-intent rejection
 
-The validation data was divided into separate calibration and evaluation subsets using a deterministic SHA-256 split grouped by parallel example ID. This prevents translated versions of the same request from appearing in both subsets.
+Validation data was divided into calibration and evaluation subsets using a deterministic SHA-256 split grouped by parallel example ID. Temperature and confidence thresholds were selected only on calibration data and measured on the separate evaluation subset.
 
-Temperature scaling was fitted using calibration-known examples. Confidence thresholds were selected using calibration known and OOS examples, then measured on the held-out validation evaluation subset. The final test set remained untouched.
+One known intent, `audio_volume_other`, has no official validation examples. Validation classification metrics therefore cover the 49 known intents present while every model retains 50 output classes.
 
-One configured known intent, `audio_volume_other`, has no examples in the official validation partition. Validation classification metrics therefore cover the 49 known intents present in that partition while the trained models retain all 50 output classes.
-
-### Calibration results
+### Calibration
 
 | Model | Temperature | ECE before | ECE after | NLL before | NLL after |
 |---|---:|---:|---:|---:|---:|
 | TF-IDF | 0.7398 | 0.0938 | 0.0184 | 0.6917 | 0.6381 |
 | Weighted XLM-R | 0.9204 | 0.0319 | 0.0266 | 0.6223 | 0.6177 |
 | Noise-Augmented XLM-R | 0.9655 | 0.0187 | 0.0259 | 0.5761 | 0.5757 |
-
-Temperature scaling substantially improves TF-IDF calibration and slightly improves weighted XLM-R. The augmented XLM-R was already well calibrated, and its ECE becomes slightly worse after scaling.
+| Combined-Augmented XLM-R | 0.9661 | 0.0189 | 0.0227 | 0.5821 | 0.5809 |
 
 ### Unseen-intent detection
 
@@ -180,10 +161,11 @@ Temperature scaling substantially improves TF-IDF calibration and slightly impro
 | TF-IDF | 0.536 | 0.6717 | 0.1524 | 0.1920 | 0.8535 | 0.9113 |
 | Weighted XLM-R | 0.567 | 0.6693 | 0.1739 | 0.2079 | 0.9016 | 0.9044 |
 | Noise-Augmented XLM-R | 0.797 | 0.6960 | 0.2050 | 0.2788 | 0.8145 | 0.9382 |
+| Combined-Augmented XLM-R | 0.728 | 0.7033 | 0.1848 | 0.2792 | 0.8447 | 0.9306 |
 
-The augmented XLM-R provides the strongest unseen-intent detection and the highest accuracy on accepted known inputs. However, its OOS F1 remains only 0.2788, and achieving high OOS recall produces many false rejections. Maximum confidence is therefore useful for selective prediction but is not a reliable standalone unseen-intent detector.
+The combined model achieves the best AUROC and OOS F1 while retaining more known inputs than the noise-only augmented model. However, OOS F1 remains low, demonstrating that maximum class confidence is not a reliable standalone unseen-intent detector.
 
-Per-language OOS F1 for the augmented XLM-R is 0.2811 for English, 0.3106 for Hindi, and 0.2454 for Kannada.
+Combined-model OOS F1 is 0.2740 for English, 0.2991 for Hindi, and 0.2651 for Kannada.
 
 ![Calibration and unseen-intent results](results/figures/oos_calibration_summary.png)
 <!-- OOS_CALIBRATION_RESULTS_END -->

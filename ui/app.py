@@ -204,7 +204,7 @@ def build_demo() -> gr.Blocks:
                             candidates = gr.Label(label="Top five known-intent candidates", num_top_classes=5)
                     metadata = gr.HTML()
                     gr.Markdown("### Request gallery")
-                    gr.Examples(EXAMPLES, inputs=command, examples_per_page=14, elem_classes="examples")
+                    gr.Examples(EXAMPLES, inputs=command, examples_per_page=14)
 
             with gr.Tab("Reliability Lab"):
                 with gr.Column(elem_classes="content-pad"):

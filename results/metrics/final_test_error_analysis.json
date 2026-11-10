@@ -1,0 +1,988 @@
+{
+  "status": "post-test diagnostic; no model or threshold tuning",
+  "model": "Combined-Augmented XLM-R",
+  "samples": 6831,
+  "accuracy": 0.8568291611769873,
+  "macro_f1": 0.8039509666144233,
+  "per_language": [
+    {
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.8783487044356609,
+      "macro_f1": 0.8347792725677698
+    },
+    {
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.8629776021080369,
+      "macro_f1": 0.7980629803257334
+    },
+    {
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.829161176987264,
+      "macro_f1": 0.7796996297666293
+    }
+  ],
+  "per_intent": [
+    {
+      "intent": "alarm_query",
+      "precision": 0.9587628865979382,
+      "recall": 0.9117647058823529,
+      "f1": 0.9346733668341709,
+      "support": 102
+    },
+    {
+      "intent": "alarm_set",
+      "precision": 0.8273381294964028,
+      "recall": 0.9349593495934959,
+      "f1": 0.8778625954198473,
+      "support": 123
+    },
+    {
+      "intent": "audio_volume_down",
+      "precision": 0.8823529411764706,
+      "recall": 0.9090909090909091,
+      "f1": 0.8955223880597015,
+      "support": 33
+    },
+    {
+      "intent": "audio_volume_mute",
+      "precision": 0.7962962962962963,
+      "recall": 0.8958333333333334,
+      "f1": 0.8431372549019608,
+      "support": 96
+    },
+    {
+      "intent": "audio_volume_other",
+      "precision": 0.7368421052631579,
+      "recall": 0.7777777777777778,
+      "f1": 0.7567567567567568,
+      "support": 18
+    },
+    {
+      "intent": "calendar_set",
+      "precision": 0.9266347687400319,
+      "recall": 0.9266347687400319,
+      "f1": 0.9266347687400319,
+      "support": 627
+    },
+    {
+      "intent": "cooking_query",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    {
+      "intent": "cooking_recipe",
+      "precision": 0.9425837320574163,
+      "recall": 0.9120370370370371,
+      "f1": 0.9270588235294117,
+      "support": 216
+    },
+    {
+      "intent": "datetime_convert",
+      "precision": 0.7954545454545454,
+      "recall": 0.7777777777777778,
+      "f1": 0.7865168539325843,
+      "support": 45
+    },
+    {
+      "intent": "datetime_query",
+      "precision": 0.9389312977099237,
+      "recall": 0.9318181818181818,
+      "f1": 0.935361216730038,
+      "support": 264
+    },
+    {
+      "intent": "email_querycontact",
+      "precision": 0.6842105263157895,
+      "recall": 0.8333333333333334,
+      "f1": 0.7514450867052023,
+      "support": 78
+    },
+    {
+      "intent": "general_greet",
+      "precision": 0.17647058823529413,
+      "recall": 1.0,
+      "f1": 0.3,
+      "support": 3
+    },
+    {
+      "intent": "general_joke",
+      "precision": 0.9152542372881356,
+      "recall": 0.9473684210526315,
+      "f1": 0.9310344827586207,
+      "support": 57
+    },
+    {
+      "intent": "general_quirky",
+      "precision": 0.6938775510204082,
+      "recall": 0.5364891518737672,
+      "f1": 0.6051167964404894,
+      "support": 507
+    },
+    {
+      "intent": "iot_cleaning",
+      "precision": 0.9583333333333334,
+      "recall": 0.8846153846153846,
+      "f1": 0.92,
+      "support": 78
+    },
+    {
+      "intent": "iot_coffee",
+      "precision": 0.9459459459459459,
+      "recall": 0.9722222222222222,
+      "f1": 0.958904109589041,
+      "support": 108
+    },
+    {
+      "intent": "iot_hue_lightchange",
+      "precision": 0.8715596330275229,
+      "recall": 0.8796296296296297,
+      "f1": 0.8755760368663594,
+      "support": 108
+    },
+    {
+      "intent": "iot_hue_lightdim",
+      "precision": 0.8852459016393442,
+      "recall": 0.8571428571428571,
+      "f1": 0.8709677419354839,
+      "support": 63
+    },
+    {
+      "intent": "iot_hue_lightoff",
+      "precision": 0.9224806201550387,
+      "recall": 0.9224806201550387,
+      "f1": 0.9224806201550387,
+      "support": 129
+    },
+    {
+      "intent": "iot_hue_lighton",
+      "precision": 0.5,
+      "recall": 0.2222222222222222,
+      "f1": 0.3076923076923077,
+      "support": 9
+    },
+    {
+      "intent": "iot_hue_lightup",
+      "precision": 0.8072289156626506,
+      "recall": 0.8271604938271605,
+      "f1": 0.8170731707317073,
+      "support": 81
+    },
+    {
+      "intent": "iot_wemo_off",
+      "precision": 0.9791666666666666,
+      "recall": 0.8703703703703703,
+      "f1": 0.9215686274509803,
+      "support": 54
+    },
+    {
+      "intent": "iot_wemo_on",
+      "precision": 0.7352941176470589,
+      "recall": 0.8333333333333334,
+      "f1": 0.78125,
+      "support": 30
+    },
+    {
+      "intent": "lists_createoradd",
+      "precision": 0.7555555555555555,
+      "recall": 0.8717948717948718,
+      "f1": 0.8095238095238095,
+      "support": 117
+    },
+    {
+      "intent": "lists_query",
+      "precision": 0.8355263157894737,
+      "recall": 0.8300653594771242,
+      "f1": 0.8327868852459016,
+      "support": 153
+    },
+    {
+      "intent": "lists_remove",
+      "precision": 0.9571428571428572,
+      "recall": 0.8589743589743589,
+      "f1": 0.9054054054054054,
+      "support": 156
+    },
+    {
+      "intent": "music_dislikeness",
+      "precision": 0.8888888888888888,
+      "recall": 0.6666666666666666,
+      "f1": 0.7619047619047619,
+      "support": 12
+    },
+    {
+      "intent": "music_likeness",
+      "precision": 0.8584905660377359,
+      "recall": 0.8425925925925926,
+      "f1": 0.8504672897196262,
+      "support": 108
+    },
+    {
+      "intent": "music_query",
+      "precision": 0.8842105263157894,
+      "recall": 0.8,
+      "f1": 0.84,
+      "support": 105
+    },
+    {
+      "intent": "music_settings",
+      "precision": 0.3333333333333333,
+      "recall": 0.2222222222222222,
+      "f1": 0.26666666666666666,
+      "support": 18
+    },
+    {
+      "intent": "news_query",
+      "precision": 0.8958904109589041,
+      "recall": 0.8790322580645161,
+      "f1": 0.8873812754409769,
+      "support": 372
+    },
+    {
+      "intent": "play_audiobook",
+      "precision": 0.8253968253968254,
+      "recall": 0.8455284552845529,
+      "f1": 0.8353413654618473,
+      "support": 123
+    },
+    {
+      "intent": "play_game",
+      "precision": 0.8198198198198198,
+      "recall": 0.8666666666666667,
+      "f1": 0.8425925925925926,
+      "support": 105
+    },
+    {
+      "intent": "play_podcasts",
+      "precision": 0.9408602150537635,
+      "recall": 0.9259259259259259,
+      "f1": 0.9333333333333333,
+      "support": 189
+    },
+    {
+      "intent": "play_radio",
+      "precision": 0.8468085106382979,
+      "recall": 0.9212962962962963,
+      "f1": 0.8824833702882483,
+      "support": 216
+    },
+    {
+      "intent": "qa_currency",
+      "precision": 0.9180327868852459,
+      "recall": 0.9572649572649573,
+      "f1": 0.9372384937238494,
+      "support": 117
+    },
+    {
+      "intent": "qa_definition",
+      "precision": 0.8333333333333334,
+      "recall": 0.847953216374269,
+      "f1": 0.8405797101449275,
+      "support": 171
+    },
+    {
+      "intent": "qa_factoid",
+      "precision": 0.7764976958525346,
+      "recall": 0.7966903073286052,
+      "f1": 0.7864644107351225,
+      "support": 423
+    },
+    {
+      "intent": "qa_maths",
+      "precision": 0.7468354430379747,
+      "recall": 0.7866666666666666,
+      "f1": 0.7662337662337663,
+      "support": 75
+    },
+    {
+      "intent": "recommendation_events",
+      "precision": 0.7619047619047619,
+      "recall": 0.8682170542635659,
+      "f1": 0.8115942028985508,
+      "support": 129
+    },
+    {
+      "intent": "recommendation_locations",
+      "precision": 0.7345132743362832,
+      "recall": 0.8924731182795699,
+      "f1": 0.8058252427184466,
+      "support": 93
+    },
+    {
+      "intent": "recommendation_movies",
+      "precision": 0.6891891891891891,
+      "recall": 0.85,
+      "f1": 0.7611940298507462,
+      "support": 60
+    },
+    {
+      "intent": "social_post",
+      "precision": 0.9644444444444444,
+      "recall": 0.8930041152263375,
+      "f1": 0.9273504273504274,
+      "support": 243
+    },
+    {
+      "intent": "social_query",
+      "precision": 0.8461538461538461,
+      "recall": 0.88,
+      "f1": 0.8627450980392157,
+      "support": 75
+    },
+    {
+      "intent": "takeaway_order",
+      "precision": 0.7567567567567568,
+      "recall": 0.8484848484848485,
+      "f1": 0.8,
+      "support": 66
+    },
+    {
+      "intent": "takeaway_query",
+      "precision": 0.8461538461538461,
+      "recall": 0.8380952380952381,
+      "f1": 0.8421052631578947,
+      "support": 105
+    },
+    {
+      "intent": "transport_query",
+      "precision": 0.8450704225352113,
+      "recall": 0.7843137254901961,
+      "f1": 0.8135593220338984,
+      "support": 153
+    },
+    {
+      "intent": "transport_ticket",
+      "precision": 0.908256880733945,
+      "recall": 0.9428571428571428,
+      "f1": 0.9252336448598131,
+      "support": 105
+    },
+    {
+      "intent": "transport_traffic",
+      "precision": 0.7894736842105263,
+      "recall": 1.0,
+      "f1": 0.8823529411764706,
+      "support": 45
+    },
+    {
+      "intent": "weather_query",
+      "precision": 0.9345991561181435,
+      "recall": 0.9465811965811965,
+      "f1": 0.940552016985138,
+      "support": 468
+    }
+  ],
+  "largest_confusions": [
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "qa_factoid",
+      "count": 48
+    },
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "calendar_set",
+      "count": 24
+    },
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "news_query",
+      "count": 19
+    },
+    {
+      "true_intent": "qa_factoid",
+      "predicted_intent": "general_quirky",
+      "count": 18
+    },
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "recommendation_events",
+      "count": 17
+    },
+    {
+      "true_intent": "qa_factoid",
+      "predicted_intent": "email_querycontact",
+      "count": 16
+    },
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "weather_query",
+      "count": 14
+    },
+    {
+      "true_intent": "lists_remove",
+      "predicted_intent": "lists_createoradd",
+      "count": 14
+    },
+    {
+      "true_intent": "news_query",
+      "predicted_intent": "general_quirky",
+      "count": 13
+    },
+    {
+      "true_intent": "calendar_set",
+      "predicted_intent": "alarm_set",
+      "count": 13
+    },
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "qa_definition",
+      "count": 11
+    },
+    {
+      "true_intent": "qa_definition",
+      "predicted_intent": "qa_factoid",
+      "count": 11
+    },
+    {
+      "true_intent": "weather_query",
+      "predicted_intent": "general_quirky",
+      "count": 11
+    },
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "general_greet",
+      "count": 11
+    },
+    {
+      "true_intent": "social_post",
+      "predicted_intent": "general_quirky",
+      "count": 10
+    },
+    {
+      "true_intent": "general_quirky",
+      "predicted_intent": "cooking_recipe",
+      "count": 9
+    },
+    {
+      "true_intent": "social_query",
+      "predicted_intent": "news_query",
+      "count": 9
+    },
+    {
+      "true_intent": "transport_query",
+      "predicted_intent": "qa_factoid",
+      "count": 9
+    },
+    {
+      "true_intent": "iot_hue_lightchange",
+      "predicted_intent": "iot_hue_lightup",
+      "count": 9
+    },
+    {
+      "true_intent": "alarm_query",
+      "predicted_intent": "alarm_set",
+      "count": 8
+    },
+    {
+      "true_intent": "social_post",
+      "predicted_intent": "calendar_set",
+      "count": 8
+    },
+    {
+      "true_intent": "qa_factoid",
+      "predicted_intent": "qa_definition",
+      "count": 8
+    },
+    {
+      "true_intent": "qa_factoid",
+      "predicted_intent": "transport_query",
+      "count": 8
+    },
+    {
+      "true_intent": "music_query",
+      "predicted_intent": "play_radio",
+      "count": 8
+    },
+    {
+      "true_intent": "news_query",
+      "predicted_intent": "qa_factoid",
+      "count": 8
+    }
+  ],
+  "highest_confidence_errors": [
+    {
+      "id": 14877,
+      "locale": "kn-IN",
+      "utt": "ಆ ಪ್ರದೇಶದಲ್ಲಿ ಹವಾಮಾನ ಪರಿಸ್ಥಿತಿಗಳು ಯಾವುವು",
+      "intent": "qa_factoid",
+      "predicted_intent": "weather_query",
+      "confidence": 0.986396074295044,
+      "correct": false
+    },
+    {
+      "id": 13888,
+      "locale": "hi-IN",
+      "utt": "आगरा उत्तरप्रदेश में तापमान क्या है",
+      "intent": "qa_factoid",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9852105975151062,
+      "correct": false
+    },
+    {
+      "id": 6473,
+      "locale": "kn-IN",
+      "utt": "ಹವಾಮಾನ ಇಂದು ಕೆಟ್ಟದಾಗಿತ್ತು",
+      "intent": "general_quirky",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9850287437438965,
+      "correct": false
+    },
+    {
+      "id": 14877,
+      "locale": "en-US",
+      "utt": "what are the climatic conditions in that area",
+      "intent": "qa_factoid",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9843598008155823,
+      "correct": false
+    },
+    {
+      "id": 281,
+      "locale": "hi-IN",
+      "utt": "अमेरिकी डॉलर से पाउंड स्टर्लिंग की विनिमय दर क्या है",
+      "intent": "news_query",
+      "predicted_intent": "qa_currency",
+      "confidence": 0.983417809009552,
+      "correct": false
+    },
+    {
+      "id": 4890,
+      "locale": "kn-IN",
+      "utt": "ಭಾರತ ದಲ್ಲಿನ ಪ್ರಸ್ತುತ ಹವಾಮಾನ ವಿಪತ್ತುಗಳು ಕುರಿತು ಅಧಿಸೂಚನೆಗಳನ್ನು ಹೊಂದಿಸಿ",
+      "intent": "calendar_set",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9825367331504822,
+      "correct": false
+    },
+    {
+      "id": 281,
+      "locale": "en-US",
+      "utt": "what is the exchange rate of us dollar to pound sterling",
+      "intent": "news_query",
+      "predicted_intent": "qa_currency",
+      "confidence": 0.981789767742157,
+      "correct": false
+    },
+    {
+      "id": 281,
+      "locale": "kn-IN",
+      "utt": "ನಮ್ಮ ಡಾಲರ್ ಗೆ ಪೌಂಡ್ ಸ್ಟರ್ಲಿಂಗ್ ನ ವಿನಿಮಯ ದರ ಏನು",
+      "intent": "news_query",
+      "predicted_intent": "qa_currency",
+      "confidence": 0.9814302325248718,
+      "correct": false
+    },
+    {
+      "id": 6473,
+      "locale": "en-US",
+      "utt": "the weather was bad today",
+      "intent": "general_quirky",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9803726673126221,
+      "correct": false
+    },
+    {
+      "id": 15225,
+      "locale": "hi-IN",
+      "utt": "मुझे नवीनतम सूचनाएं दिखाएं",
+      "intent": "social_query",
+      "predicted_intent": "news_query",
+      "confidence": 0.979663074016571,
+      "correct": false
+    },
+    {
+      "id": 13888,
+      "locale": "en-US",
+      "utt": "what is the temperature in indianapolis indiana",
+      "intent": "qa_factoid",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9786128997802734,
+      "correct": false
+    },
+    {
+      "id": 6473,
+      "locale": "hi-IN",
+      "utt": "आज मौसम खराब था",
+      "intent": "general_quirky",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9783245921134949,
+      "correct": false
+    },
+    {
+      "id": 11273,
+      "locale": "kn-IN",
+      "utt": "ಜೆ. ಕೆ. ರೋಲಿಂಗ್ ಅವರಿಂದ ಹ್ಯಾರಿ ಪಾಟರ್‌ನ ಮುಂದಿನ ಎಪಿಸೋಡ್ ಪ್ಲೇ ಮಾಡಿ",
+      "intent": "play_audiobook",
+      "predicted_intent": "play_podcasts",
+      "confidence": 0.9754119515419006,
+      "correct": false
+    },
+    {
+      "id": 11424,
+      "locale": "hi-IN",
+      "utt": "जीवंत चैनल चलाएं",
+      "intent": "play_podcasts",
+      "predicted_intent": "play_radio",
+      "confidence": 0.973064124584198,
+      "correct": false
+    },
+    {
+      "id": 3669,
+      "locale": "kn-IN",
+      "utt": "ಎಲ್ಲೋ ಸಮಯ ಹೇಳಿ",
+      "intent": "datetime_convert",
+      "predicted_intent": "datetime_query",
+      "confidence": 0.9713898301124573,
+      "correct": false
+    },
+    {
+      "id": 3669,
+      "locale": "hi-IN",
+      "utt": "मुझे कहीं समय बताओ",
+      "intent": "datetime_convert",
+      "predicted_intent": "datetime_query",
+      "confidence": 0.9712740182876587,
+      "correct": false
+    },
+    {
+      "id": 14481,
+      "locale": "hi-IN",
+      "utt": "क्या हम धूप में चले",
+      "intent": "general_quirky",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9711218476295471,
+      "correct": false
+    },
+    {
+      "id": 12392,
+      "locale": "kn-IN",
+      "utt": "ಇವತ್ತಿನ ದಿಕ್ಕು ಹೇಳು",
+      "intent": "transport_query",
+      "predicted_intent": "datetime_query",
+      "confidence": 0.9707353711128235,
+      "correct": false
+    },
+    {
+      "id": 11424,
+      "locale": "en-US",
+      "utt": "vitaly channel",
+      "intent": "play_podcasts",
+      "predicted_intent": "play_radio",
+      "confidence": 0.9703190326690674,
+      "correct": false
+    },
+    {
+      "id": 14877,
+      "locale": "hi-IN",
+      "utt": "उस क्षेत्र की जलवायु परिस्थितियाँ क्या हैं",
+      "intent": "qa_factoid",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9700931310653687,
+      "correct": false
+    },
+    {
+      "id": 13548,
+      "locale": "hi-IN",
+      "utt": "मैं चाहता हूं कि आप टी. वी. चालू करें",
+      "intent": "iot_wemo_on",
+      "predicted_intent": "play_radio",
+      "confidence": 0.9700093865394592,
+      "correct": false
+    },
+    {
+      "id": 12240,
+      "locale": "en-US",
+      "utt": "what is the traffic like on my commute home at five",
+      "intent": "transport_query",
+      "predicted_intent": "transport_traffic",
+      "confidence": 0.9699718952178955,
+      "correct": false
+    },
+    {
+      "id": 7894,
+      "locale": "hi-IN",
+      "utt": "मुझे एक घंटे में चुनाव पर अपडेट दें",
+      "intent": "calendar_set",
+      "predicted_intent": "news_query",
+      "confidence": 0.9698148965835571,
+      "correct": false
+    },
+    {
+      "id": 11424,
+      "locale": "kn-IN",
+      "utt": "ಪ್ರಮುಖ ಚಾನಲ್",
+      "intent": "play_podcasts",
+      "predicted_intent": "play_radio",
+      "confidence": 0.9690605998039246,
+      "correct": false
+    },
+    {
+      "id": 3669,
+      "locale": "en-US",
+      "utt": "tell me the time in someplace",
+      "intent": "datetime_convert",
+      "predicted_intent": "datetime_query",
+      "confidence": 0.9689463973045349,
+      "correct": false
+    },
+    {
+      "id": 13761,
+      "locale": "kn-IN",
+      "utt": "ಪಾರ್ಸೆಕ್ ಎಂದರೇನು",
+      "intent": "qa_factoid",
+      "predicted_intent": "qa_definition",
+      "confidence": 0.968877375125885,
+      "correct": false
+    },
+    {
+      "id": 13154,
+      "locale": "kn-IN",
+      "utt": "ರೋಹಿತ್ ಅವರ ಫೋನ್ ಸಂಖ್ಯೆ ನಿಮಗೆ ತಿಳಿದಿದೆಯೇ",
+      "intent": "qa_factoid",
+      "predicted_intent": "email_querycontact",
+      "confidence": 0.9678738117218018,
+      "correct": false
+    },
+    {
+      "id": 13154,
+      "locale": "en-US",
+      "utt": "do you know jessica snout's phone number",
+      "intent": "qa_factoid",
+      "predicted_intent": "email_querycontact",
+      "confidence": 0.9672553539276123,
+      "correct": false
+    },
+    {
+      "id": 13154,
+      "locale": "hi-IN",
+      "utt": "क्या आप जानते हैं मुरली विजय का फोन नंबर",
+      "intent": "qa_factoid",
+      "predicted_intent": "email_querycontact",
+      "confidence": 0.9671095013618469,
+      "correct": false
+    },
+    {
+      "id": 2647,
+      "locale": "kn-IN",
+      "utt": "ನೀವು ದಯವಿಟ್ಟು ವಿ.ಹರಿಕೃಷ್ಣ ಪಂಡೋರಾ ಚಾನಲ್ ಅನ್ನು ರಚಿಸಬಹುದೇ",
+      "intent": "music_settings",
+      "predicted_intent": "play_radio",
+      "confidence": 0.9670951962471008,
+      "correct": false
+    },
+    {
+      "id": 13078,
+      "locale": "kn-IN",
+      "utt": "ಅಂಜಲಿ ವಿಳಾಸವನ್ನು ನನಗೆ ತಿಳಿಸಿ",
+      "intent": "qa_factoid",
+      "predicted_intent": "email_querycontact",
+      "confidence": 0.966915488243103,
+      "correct": false
+    },
+    {
+      "id": 6477,
+      "locale": "hi-IN",
+      "utt": "बेसबॉल स्कोर",
+      "intent": "general_quirky",
+      "predicted_intent": "news_query",
+      "confidence": 0.9656500816345215,
+      "correct": false
+    },
+    {
+      "id": 14142,
+      "locale": "kn-IN",
+      "utt": "ಬ್ರಿಟಿಷ್ ಪೌಂಡ್ ಎಷ್ಟು",
+      "intent": "qa_currency",
+      "predicted_intent": "qa_factoid",
+      "confidence": 0.9655102491378784,
+      "correct": false
+    },
+    {
+      "id": 12240,
+      "locale": "hi-IN",
+      "utt": "पांच बजे को मेरे घर के रास्ते पर यातायात कैसा है",
+      "intent": "transport_query",
+      "predicted_intent": "transport_traffic",
+      "confidence": 0.9654081463813782,
+      "correct": false
+    },
+    {
+      "id": 4833,
+      "locale": "hi-IN",
+      "utt": "डाटा मिटायें",
+      "intent": "audio_volume_mute",
+      "predicted_intent": "lists_remove",
+      "confidence": 0.9647297859191895,
+      "correct": false
+    },
+    {
+      "id": 2780,
+      "locale": "en-US",
+      "utt": "are there any upcoming concerts by",
+      "intent": "music_likeness",
+      "predicted_intent": "recommendation_events",
+      "confidence": 0.9641112089157104,
+      "correct": false
+    },
+    {
+      "id": 14701,
+      "locale": "kn-IN",
+      "utt": "ಹಾರ್ಟ್ ಸ್ಟೋನ್ ಕಾರ್ಡ್ ಆಟವನ್ನು",
+      "intent": "qa_definition",
+      "predicted_intent": "play_game",
+      "confidence": 0.9634364247322083,
+      "correct": false
+    },
+    {
+      "id": 13486,
+      "locale": "kn-IN",
+      "utt": "ನನ್ನ ಎಲ್ಲಾ ಇತ್ತೀಚಿನ ಆಜ್ಞೆಗಳ ಲಿಸ್ಟ್ಅನ್ನು ನೀವು ನನಗೆ ತೋರಿಸಬಹುದೇ",
+      "intent": "general_quirky",
+      "predicted_intent": "lists_query",
+      "confidence": 0.9632282853126526,
+      "correct": false
+    },
+    {
+      "id": 5614,
+      "locale": "kn-IN",
+      "utt": "ಈಗ ರೇಡಿಯೊದಲ್ಲಿ ಏನಿದೆ",
+      "intent": "music_query",
+      "predicted_intent": "play_radio",
+      "confidence": 0.9631779789924622,
+      "correct": false
+    },
+    {
+      "id": 11483,
+      "locale": "en-US",
+      "utt": "start playing ringcast",
+      "intent": "play_podcasts",
+      "predicted_intent": "play_radio",
+      "confidence": 0.9618091583251953,
+      "correct": false
+    },
+    {
+      "id": 13078,
+      "locale": "en-US",
+      "utt": "tell me billy crytals address",
+      "intent": "qa_factoid",
+      "predicted_intent": "email_querycontact",
+      "confidence": 0.9615442156791687,
+      "correct": false
+    },
+    {
+      "id": 13888,
+      "locale": "kn-IN",
+      "utt": "ಇಂಡಿಯಾನಾಪೊಲಿಸ್ ಇಂಡಿಯಾನಾದಲ್ಲಿ ತಾಪಮಾನ ಎಷ್ಟು",
+      "intent": "qa_factoid",
+      "predicted_intent": "weather_query",
+      "confidence": 0.9609177112579346,
+      "correct": false
+    },
+    {
+      "id": 6301,
+      "locale": "kn-IN",
+      "utt": "ಬರ್ಗರ್ ಎಂದರೇನು",
+      "intent": "general_quirky",
+      "predicted_intent": "qa_definition",
+      "confidence": 0.9605549573898315,
+      "correct": false
+    },
+    {
+      "id": 6295,
+      "locale": "kn-IN",
+      "utt": "ಟ್ರಾಫಿಕ್ ಜಾಮ್‌ಗಳು ಎಷ್ಟು ಸಮಯದವರೆಗೆ ಇರುತ್ತವೆ ಉದ್ದವಾಗಿದೆ ನಾನು ದ್ವೇಷಿಸುತ್ತೇನೆ",
+      "intent": "general_quirky",
+      "predicted_intent": "transport_traffic",
+      "confidence": 0.9597276449203491,
+      "correct": false
+    },
+    {
+      "id": 5974,
+      "locale": "hi-IN",
+      "utt": "दोपहर में टैबलेट रखने के लिए अलार्म सेट करें",
+      "intent": "alarm_query",
+      "predicted_intent": "alarm_set",
+      "confidence": 0.9596055746078491,
+      "correct": false
+    },
+    {
+      "id": 13175,
+      "locale": "kn-IN",
+      "utt": "ದಿನದ ನಿಮ್ಮ ಮೆಚ್ಚಿನ ಜೋಕ್ ಯಾವುದು",
+      "intent": "general_quirky",
+      "predicted_intent": "general_joke",
+      "confidence": 0.9585949778556824,
+      "correct": false
+    },
+    {
+      "id": 13761,
+      "locale": "en-US",
+      "utt": "what's a parsec",
+      "intent": "qa_factoid",
+      "predicted_intent": "qa_definition",
+      "confidence": 0.957821249961853,
+      "correct": false
+    },
+    {
+      "id": 13101,
+      "locale": "kn-IN",
+      "utt": "ಒನ್ ಪ್ಲಸ್ ಒನ್ ಎಂದರೇನು",
+      "intent": "qa_maths",
+      "predicted_intent": "qa_definition",
+      "confidence": 0.9573128819465637,
+      "correct": false
+    },
+    {
+      "id": 7168,
+      "locale": "hi-IN",
+      "utt": "क्या आप मुझे छब्बीस मार्च को होने वाले आगामी वार्षिक समारोह का विवरण दे सकते हैं",
+      "intent": "general_quirky",
+      "predicted_intent": "calendar_set",
+      "confidence": 0.9571894407272339,
+      "correct": false
+    },
+    {
+      "id": 12240,
+      "locale": "kn-IN",
+      "utt": "ಐದು ಗಂಟೆಗೆ ನನ್ನ ಪ್ರಯಾಣದ ಮನೆಗೆ ಟ್ರಾಫಿಕ್ ಹೇಗಿದೆ",
+      "intent": "transport_query",
+      "predicted_intent": "transport_traffic",
+      "confidence": 0.9568139314651489,
+      "correct": false
+    }
+  ],
+  "post_test_model_tuning": false,
+  "macro_f1_observed_test_intents": 0.8203581291983912,
+  "macro_f1_all_50_configured_intents": 0.8039509666144233,
+  "absent_test_intents": [
+    "cooking_query"
+  ],
+  "per_language_corrected": [
+    {
+      "locale": "en-US",
+      "samples": 2277,
+      "accuracy": 0.8783487044356609,
+      "macro_f1_observed_intents": 0.8518155842528263,
+      "macro_f1_all_50_configured_intents": 0.8347792725677698
+    },
+    {
+      "locale": "hi-IN",
+      "samples": 2277,
+      "accuracy": 0.8629776021080369,
+      "macro_f1_observed_intents": 0.8143499799242178,
+      "macro_f1_all_50_configured_intents": 0.7980629803257334
+    },
+    {
+      "locale": "kn-IN",
+      "samples": 2277,
+      "accuracy": 0.829161176987264,
+      "macro_f1_observed_intents": 0.7956118671088054,
+      "macro_f1_all_50_configured_intents": 0.7796996297666293
+    }
+  ],
+  "metric_definition_note": "The official test split contains 49 of the 50 configured known intents. Both macro-F1 definitions are reported."
+}

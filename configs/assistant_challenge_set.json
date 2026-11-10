@@ -1,0 +1,188 @@
+{
+  "status": "team-authored exploratory diagnostic; not an independent benchmark",
+  "frozen_model": "Combined-Augmented XLM-R",
+  "frozen_threshold": 0.728,
+  "frozen_temperature": 0.9661,
+  "samples": [
+    {
+      "group": "English-noisy",
+      "text": "calclate 245 * 18 / 7",
+      "expected_intent": "qa_maths"
+    },
+    {
+      "group": "English-noisy",
+      "text": "conver 250 usd to inr",
+      "expected_intent": "qa_currency"
+    },
+    {
+      "group": "English-noisy",
+      "text": "whts weather in bengaluru tomorow",
+      "expected_intent": "weather_query"
+    },
+    {
+      "group": "English-noisy",
+      "text": "ad milk and medicne to my shoping lst",
+      "expected_intent": "lists_createoradd"
+    },
+    {
+      "group": "English-noisy",
+      "text": "shw my shoping list",
+      "expected_intent": "lists_query"
+    },
+    {
+      "group": "English-noisy",
+      "text": "remve milk frm my list",
+      "expected_intent": "lists_remove"
+    },
+    {
+      "group": "English-noisy",
+      "text": "latst artificial inteligence nws",
+      "expected_intent": "news_query"
+    },
+    {
+      "group": "English-noisy",
+      "text": "recomend a sci fi movi",
+      "expected_intent": "recommendation_movies"
+    },
+    {
+      "group": "English-noisy",
+      "text": "trfic to kempegowda airport",
+      "expected_intent": "transport_traffic"
+    },
+    {
+      "group": "English-noisy",
+      "text": "ordr a large veg piza",
+      "expected_intent": "takeaway_order"
+    },
+    {
+      "group": "English-noisy",
+      "text": "ply a machine learnng podcat",
+      "expected_intent": "play_podcasts"
+    },
+    {
+      "group": "English-noisy",
+      "text": "trn off the bedrom lghts",
+      "expected_intent": "iot_hue_lightoff"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "250 dollar ko rupees mein badlo",
+      "expected_intent": "qa_currency"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "kal bengaluru ka mausam kaisa hai",
+      "expected_intent": "weather_query"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "doodh aur dawa shopping list mein jodo",
+      "expected_intent": "lists_createoradd"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "meri shopping list dikhao",
+      "expected_intent": "lists_query"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "samay kya hua hai",
+      "expected_intent": "datetime_query"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "AI ki taza khabrein dikhao",
+      "expected_intent": "news_query"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "science fiction film suggest karo",
+      "expected_intent": "recommendation_movies"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "airport tak traffic kaisa hai",
+      "expected_intent": "transport_traffic"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "chennai ke liye train ticket dhundo",
+      "expected_intent": "transport_ticket"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "ek veg pizza order karo",
+      "expected_intent": "takeaway_order"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "machine learning podcast chalao",
+      "expected_intent": "play_podcasts"
+    },
+    {
+      "group": "Romanized-Hindi",
+      "text": "bedroom ki lights band karo",
+      "expected_intent": "iot_hue_lightoff"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "250 dollar annu rupees ge badalisi",
+      "expected_intent": "qa_currency"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "nale bengaluru havaamana hegide",
+      "expected_intent": "weather_query"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "haalu mattu aushadhi shopping list ge serisi",
+      "expected_intent": "lists_createoradd"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "nanna shopping list torisi",
+      "expected_intent": "lists_query"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "iga samaya eshtu",
+      "expected_intent": "datetime_query"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "hosa AI suddi torisi",
+      "expected_intent": "news_query"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "science fiction cinema shifarasu maadi",
+      "expected_intent": "recommendation_movies"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "airport ge traffic hegide",
+      "expected_intent": "transport_traffic"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "chennai ge train ticket huduki",
+      "expected_intent": "transport_ticket"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "ondu veg pizza order maadi",
+      "expected_intent": "takeaway_order"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "machine learning podcast play maadi",
+      "expected_intent": "play_podcasts"
+    },
+    {
+      "group": "Romanized-Kannada",
+      "text": "bedroom light off maadi",
+      "expected_intent": "iot_hue_lightoff"
+    }
+  ]
+}

@@ -35,6 +35,18 @@ Exact experimental settings are stored in `configs/`, while reported
 validation and frozen-test outputs are stored in `results/metrics/`.
 <!-- REPRODUCIBILITY_END -->
 
+## Run the assistant demo in Colab
+
+After cloning the repository and mounting Google Drive, run:
+
+    !python -u scripts/launch_colab.py
+
+The launcher copies the final model from Drive to faster Colab storage and
+prints a temporary `gradio.live` link after the model loads. The assistant
+supports all 50 trained intents through answers, session-local demo actions,
+or honest links to external services. It never claims that an email, purchase,
+social post, or physical-device action succeeded without a real connection.
+
 ## Dataset
 
 The project uses the public [MASSIVE 1.1 dataset](https://github.com/alexa/massive), licensed under CC BY 4.0. Dataset files are downloaded when required and are not stored in this repository.
@@ -108,7 +120,7 @@ Datasets, secrets, environments, and model checkpoints are excluded from Git.
 - [x] OOS detection and calibration
 - [x] Combined noise and transliteration augmentation
 - [x] Final test evaluation
-- [ ] Professional interface
+- [x] Professional assistant interface and 50-intent response layer
 
 Only verified experimental results are reported.
 

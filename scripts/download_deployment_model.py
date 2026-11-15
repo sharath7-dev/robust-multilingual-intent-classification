@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
+from importlib.util import find_spec
 from pathlib import Path
 
 from huggingface_hub import HfApi, snapshot_download
@@ -17,6 +19,34 @@ REQUIRED_FILES = {
     "tokenizer.json",
     "tokenizer_config.json",
 }
+
+
+def prune_pytorch_build_files() -> None:
+    """Remove compiler-only PyTorch files that inference never imports."""
+
+    spec = find_spec("torch")
+    if spec is None or not spec.submodule_search_locations:
+        print("PyTorch package not found; no build files pruned.")
+        return
+
+    torch_dir = Path(next(iter(spec.submodule_search_locations))).resolve()
+    if torch_dir.name != "torch":
+        raise RuntimeError(f"Unexpected PyTorch package path: {torch_dir}")
+
+    removed_bytes = 0
+    for relative_path in (Path("include"), Path("share") / "cmake"):
+        target = (torch_dir / relative_path).resolve()
+        if torch_dir not in target.parents or not target.is_dir():
+            continue
+        removed_bytes += sum(
+            path.stat().st_size for path in target.rglob("*") if path.is_file()
+        )
+        shutil.rmtree(target)
+
+    print(
+        "Pruned PyTorch compiler-only files:",
+        f"{removed_bytes / (1024 ** 2):.1f} MiB",
+    )
 
 
 def main() -> None:
@@ -74,6 +104,7 @@ def main() -> None:
         info.sha,
         f"{weights.stat().st_size / (1024 ** 3):.2f} GiB",
     )
+    prune_pytorch_build_files()
 
 
 if __name__ == "__main__":

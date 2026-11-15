@@ -64,8 +64,12 @@ class ActionEngineTests(unittest.TestCase):
     def test_weather_location_and_time_extraction(self):
         self.assertEqual(self.engine._weather_location("weather in Bengaluru tomorrow"), "Bengaluru")
         self.assertEqual(self.engine._weather_location("naale bengaluru weather eniratte"), "Bengaluru")
+        self.assertEqual(self.engine._weather_location("कल बेंगलुरु का मौसं कैसा रहेगा"), "Bengaluru")
+        self.assertEqual(self.engine._weather_location("ನಾಳೆ ಬೆಂಗಳೂರಿನ ಹವಮನ ಹೇಗಿದೆ"), "Bengaluru")
         self.assertTrue(self.engine._asks_tomorrow("wethr in Bengaluru tmrw"))
         self.assertTrue(self.engine._asks_tomorrow("naale bengaluru weather eniratte"))
+        self.assertTrue(self.engine._asks_tomorrow("कल बेंगलुरु का मौसम"))
+        self.assertTrue(self.engine._asks_tomorrow("ನಾಳೆ ಬೆಂಗಳೂರಿನ ಹವಾಮಾನ"))
 
     def test_weather_returns_an_answer_not_a_search_handoff(self):
         responses = iter([

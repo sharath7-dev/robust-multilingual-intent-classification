@@ -20,14 +20,14 @@ classifier = IntentClassifier()
 actions = ActionEngine()
 
 PRESETS = [
-    ("Wethr tmrw", "whts the wethr in Bengaluru tmrw"),
-    ("Calclate", "calclate (245 * 18) / 7"),
-    ("Add to lst", "add milk and medcine to my shoping list"),
-    ("Recpie", "give me a recpie for veg pasta"),
-    ("Time in Londn", "wht time is it in London rn"),
-    ("Trffic", "hows the trffic to Kempegowda airport"),
-    ("Ligths on", "turn the bedroom ligths on"),
-    ("Knowlege", "define retrival augmented generation"),
+    ("EN · Wethr tmrw", "whts the wethr in Bengaluru tmrw"),
+    ("EN · Calclate", "calclate (245 * 18) / 7"),
+    ("HI · मौसं", "कल बेंगलुरु का मौसं कैसा रहेगा"),
+    ("HI · Romanized", "kal bengaluru ka mausm kaisa hai"),
+    ("KN · ಹವಮನ", "ನಾಳೆ ಬೆಂಗಳೂರಿನ ಹವಮನ ಹೇಗಿದೆ"),
+    ("KN · Romanized", "naale bengaluru havamana hegide"),
+    ("EN · Shoping lst", "add milk and medcine to my shoping list"),
+    ("EN · Ligths on", "turn the bedroom ligths on"),
 ]
 
 
@@ -85,13 +85,23 @@ def run_command(text: str):
         used_cue = bool(explicit_intent and (not accepted or explicit_intent != prediction["top_candidate"]))
         resolved_intent = explicit_intent or prediction["top_candidate"]
         if accepted or explicit_intent:
-            action_html = result_to_html(actions.execute(resolved_intent, text))
+            action_result = actions.execute(resolved_intent, text)
         else:
-            action_html = result_to_html(actions.clarification(prediction["top_predictions"]))
-        return action_html, _decision_html(prediction, resolved_intent, used_cue), _candidates_html(prediction), _metadata_html(prediction)
+            action_result = actions.clarification(prediction["top_predictions"])
+        spoken_reply = f"{action_result.title}. {action_result.message}"
+        return (
+            result_to_html(action_result),
+            _decision_html(prediction, resolved_intent, used_cue),
+            _candidates_html(prediction),
+            _metadata_html(prediction),
+            spoken_reply,
+        )
     except Exception as error:
         message = html.escape(str(error))
-        return f'<article class="action-card action-error"><div class="action-kicker">REQUEST ERROR</div><h3>Unable to process</h3><p>{message}</p></article>', "", "", ""
+        return (
+            f'<article class="action-card action-error"><div class="action-kicker">REQUEST ERROR</div><h3>Unable to process</h3><p>{message}</p></article>',
+            "", "", "", f"Unable to process the request. {str(error)}",
+        )
 
 
 def run_preset(text: str):
@@ -107,16 +117,27 @@ def use_voice(audio_path: str | None):
 
 
 def clear_results():
-    return EMPTY_ANSWER, "", "", ""
+    return EMPTY_ANSWER, "", "", "", ""
 
 
 def clear_all():
-    return "", EMPTY_ANSWER, "", "", ""
+    return "", EMPTY_ANSWER, "", "", "", ""
 
 
 EMPTY_ANSWER = """<article class="action-card action-waiting"><div class="action-kicker">READY</div>
   <h3>How can I help?</h3><p>Ask for a calculation, weather, recipe, list, time, knowledge, route, media search, or a virtual smart-home action.</p>
   <div class="empty-line"></div><div class="empty-line short"></div></article>"""
+
+SPEAK_JS = r"""(text) => {
+  if (!text) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  if (/[ऀ-ॿ]/.test(text)) utterance.lang = "hi-IN";
+  else if (/[ಀ-೿]/.test(text)) utterance.lang = "kn-IN";
+  else utterance.lang = "en-IN";
+  utterance.rate = 0.96;
+  window.speechSynthesis.speak(utterance);
+}"""
 
 CSS = r"""
 :root{--bg:#f4f6f8;--surface:#fff;--ink:#17202a;--muted:#687482;--line:#dce2e7;--navy:#102a43;--teal:#007f73;--amber:#b96a16;--shadow:0 12px 32px rgba(16,42,67,.08)}
@@ -148,10 +169,13 @@ def build_demo() -> gr.Blocks:
                                 run = gr.Button("Ask IntentShield", variant="primary", elem_classes="run-btn")
                                 clear = gr.Button("Clear", elem_classes="clear-btn")
                             with gr.Accordion("Speak instead · optional beta", open=False):
-                                voice = gr.Audio(sources=["microphone"], type="filepath", label="Record your request")
+                                voice = gr.Audio(
+                                    sources=["microphone"], type="filepath", format="wav",
+                                    recording=True, label="Record your request",
+                                )
                                 voice_button = gr.Button("Convert voice to text", size="sm")
-                                voice_status = gr.Markdown("The first use downloads a small open-source Whisper model.")
-                            gr.HTML('<div class="preset-title">TRY A ROBUSTNESS EXAMPLE · INTENTIONAL TYPOS</div>')
+                                voice_status = gr.Markdown("Allow microphone access in the browser. The first use downloads a small open-source Whisper model.")
+                            gr.HTML('<div class="preset-title">TRY MULTILINGUAL ROBUSTNESS EXAMPLES · INTENTIONAL TYPOS</div>')
                             preset_buttons = []
                             for start in range(0, len(PRESETS), 4):
                                 with gr.Row(elem_classes="preset-grid"):
@@ -159,6 +183,8 @@ def build_demo() -> gr.Blocks:
                                         preset_buttons.append((gr.Button(label, size="sm"), text))
                         with gr.Column(scale=7):
                             action_output = gr.HTML(EMPTY_ANSWER)
+                            speak_button = gr.Button("🔊 Hear assistant reply", size="sm")
+                            spoken_response = gr.Textbox(visible=False)
                     with gr.Accordion("How the model interpreted this request", open=False):
                         decision = gr.HTML()
                         candidates = gr.HTML()
@@ -171,12 +197,13 @@ def build_demo() -> gr.Blocks:
             with gr.Tab("Capabilities & limits"):
                 gr.HTML("""<section class="evidence-copy"><div class="section-label">WHAT THIS DEMO CAN DO</div><h2>A useful bounded assistant—not a general chatbot</h2><p>The trained NLP model recognizes 50 intent types. The assistant layer then gives a result, updates safe session-local demo state, or opens the right verified service.</p><div class="capability-grid"><div><b>Answers</b><span>Math, time, definitions, factual lookup, weather, currency and recipes.</span></div><div><b>Organises</b><span>Lists, alarms, calendar drafts and preferences during the current session.</span></div><div><b>Finds</b><span>News, media, movies, places, events, food, routes, traffic and tickets.</span></div><div><b>Virtual controls</b><span>Lights, plugs, cleaner, coffee maker and audio state without claiming a real device changed.</span></div><div><b>Safety</b><span>Low-confidence requests ask for clarification instead of silently doing the wrong task.</span></div><div><b>Limits</b><span>No purchases, posts, emails or physical actions occur without a connected account and confirmation.</span></div></div></section>""")
         gr.HTML('<footer class="footer"><span><b>IntentShield</b> · Robust and Calibrated Multilingual Intent Classification</span><span>MASSIVE 1.1 · Combined-Augmented XLM-R</span></footer>')
-        outputs = [action_output, decision, candidates, metadata]
+        outputs = [action_output, decision, candidates, metadata, spoken_response]
         run.click(run_command, inputs=command, outputs=outputs)
         command.submit(run_command, inputs=command, outputs=outputs)
         command.input(clear_results, outputs=outputs)
         clear.click(clear_all, outputs=[command, *outputs])
         voice_button.click(use_voice, inputs=voice, outputs=[command, voice_status])
+        speak_button.click(fn=None, inputs=spoken_response, outputs=None, js=SPEAK_JS)
         for button, text in preset_buttons:
             button.click(lambda value=text: run_preset(value), outputs=[command, *outputs])
     return demo

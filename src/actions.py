@@ -300,9 +300,11 @@ class ActionEngine:
             "hyderabad": "Hyderabad", "kolkata": "Kolkata", "pune": "Pune",
             "london": "London", "tokyo": "Tokyo", "dubai": "Dubai", "singapore": "Singapore",
             "new york": "New York", "sydney": "Sydney",
+            "बेंगलुरु": "Bengaluru", "बैंगलोर": "Bengaluru",
+            "ಬೆಂಗಳೂರು": "Bengaluru", "ಬೆಂಗಳೂರ": "Bengaluru", "ಮೈಸೂರು": "Mysuru",
         }
         for alias, city in aliases.items():
-            if re.search(rf"\b{re.escape(alias)}\b", lowered):
+            if alias in lowered:
                 return city
         match = re.search(
             r"(?:\bin|\bat|\bfor)\s+([A-Za-z .-]{2,40}?)(?=\s+(?:tomorrow|tmrw|tmr|today|now|rn)\b|[?!.]|$)",
@@ -313,7 +315,7 @@ class ActionEngine:
 
     @staticmethod
     def _asks_tomorrow(text: str) -> bool:
-        return bool(re.search(r"\b(tomorrow|tomorow|tmrw|tmr|naale|nale|kal)\b", text.lower()))
+        return bool(re.search(r"\b(tomorrow|tomorow|tmrw|tmr|naale|nale|kal)\b|कल|ನಾಳೆ", text.lower()))
 
     def _weather(self, text):
         city = self._weather_location(text)

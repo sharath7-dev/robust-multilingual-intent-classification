@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 import gradio as gr
 
-from ui.app import REPO_ROOT, demo
+from ui.app import CSS, REPO_ROOT, demo
 
 
 api = FastAPI(
@@ -24,6 +24,8 @@ app = gr.mount_gradio_app(
     path="/",
     allowed_paths=[str(REPO_ROOT / "results" / "figures")],
     show_error=True,
+    theme=gr.themes.Soft(primary_hue="teal", neutral_hue="slate"),
+    css=CSS,
     footer_links=[],
     run_history=False,
 )

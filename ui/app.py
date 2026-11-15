@@ -114,14 +114,66 @@ EMPTY_ANSWER = """<article class="action-card action-waiting"><div class="action
   <h3>How can I help?</h3><p>Ask for a calculation, weather, recipe, list, time, knowledge, route, media search, or a virtual smart-home action.</p>
   <div class="empty-line"></div><div class="empty-line short"></div></article>"""
 
-SPEAK_JS = r"""(text) => {
+SPEAK_JS = r"""async (text) => {
   if (!text) return;
   window.speechSynthesis.cancel();
+
+  const loadVoices = () => new Promise((resolve) => {
+    const available = window.speechSynthesis.getVoices();
+    if (available.length) {
+      resolve(available);
+      return;
+    }
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      resolve(window.speechSynthesis.getVoices());
+    };
+    window.speechSynthesis.addEventListener("voiceschanged", finish, {once: true});
+    window.setTimeout(finish, 1200);
+  });
+
+  const language = /[ऀ-ॿ]/.test(text)
+    ? "hi-IN"
+    : /[ಀ-೿]/.test(text)
+      ? "kn-IN"
+      : "en-IN";
+  const voices = await loadVoices();
+  const preferredNames = {
+    "en-IN": ["neerja", "heera", "prabhat", "google uk english female"],
+    "hi-IN": ["swara", "madhur", "kalpana", "google हिन्दी"],
+    "kn-IN": ["sapna", "gagan", "google ಕನ್ನಡ"],
+  };
+  const preferred = preferredNames[language] || [];
+  const voiceScore = (voice) => {
+    const name = voice.name.toLowerCase();
+    const voiceLanguage = voice.lang.toLowerCase();
+    const target = language.toLowerCase();
+    let score = 0;
+    if (voiceLanguage === target) score += 120;
+    else if (voiceLanguage.split("-")[0] === target.split("-")[0]) score += 80;
+    else if (language === "en-IN" && voiceLanguage.startsWith("en-")) score += 35;
+    if (name.includes("natural") || name.includes("neural")) score += 90;
+    if (name.includes("google")) score += 45;
+    if (name.includes("microsoft")) score += 35;
+    preferred.forEach((candidate, index) => {
+      if (name.includes(candidate)) score += 70 - index * 8;
+    });
+    if (name.includes("female")) score += 8;
+    if (name.includes("espeak") || name.includes("compact")) score -= 100;
+    return score;
+  };
+  const selectedVoice = voices
+    .map((voice) => ({voice, score: voiceScore(voice)}))
+    .sort((left, right) => right.score - left.score)[0]?.voice;
+
   const utterance = new SpeechSynthesisUtterance(text);
-  if (/[ऀ-ॿ]/.test(text)) utterance.lang = "hi-IN";
-  else if (/[ಀ-೿]/.test(text)) utterance.lang = "kn-IN";
-  else utterance.lang = "en-IN";
-  utterance.rate = 0.96;
+  utterance.lang = selectedVoice?.lang || language;
+  if (selectedVoice) utterance.voice = selectedVoice;
+  utterance.rate = 0.92;
+  utterance.pitch = 1.02;
+  utterance.volume = 1.0;
   window.speechSynthesis.speak(utterance);
 }"""
 
@@ -202,7 +254,7 @@ def build_demo() -> gr.Blocks:
                                 load_intent = gr.Button("Load example request", size="sm")
                         with gr.Column(scale=7):
                             action_output = gr.HTML(EMPTY_ANSWER)
-                            speak_button = gr.Button("🔊 Hear assistant reply", size="sm")
+                            speak_button = gr.Button("🔊 Play natural voice", size="sm")
                             spoken_response = gr.Textbox(visible=False)
                     with gr.Accordion("How the model interpreted this request", open=False):
                         decision = gr.HTML()

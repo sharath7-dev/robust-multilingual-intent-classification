@@ -17,9 +17,9 @@ The verified experiments were run in Google Colab with Python 3.13.16 and
 a Tesla T4 GPU. A GPU is strongly recommended for XLM-R training and inference.
 
 1. Clone this repository.
-2. Install the verified dependencies:
+2. Install the verified research dependencies:
 
-       pip install -r requirements.txt
+       pip install -r requirements-research.txt
 
 3. Open and run:
 
@@ -49,6 +49,24 @@ social post, or physical-device action succeeded without a real connection.
 The interface includes intentional spelling-error examples, a selector covering
 all 50 supported intents, browser speech input for Chrome/Edge, and spoken
 assistant replies.
+
+## Permanent Vercel deployment
+
+The repository includes a FastAPI/Gradio entrypoint for a permanent Vercel
+deployment. The frozen 1.05 GB checkpoint remains outside GitHub and is fetched
+from a Hugging Face model repository during the Vercel build.
+
+Required Vercel environment variables:
+
+- `MODEL_REPO_ID`: Hugging Face repository containing the final model files
+- `MODEL_REVISION`: immutable Hugging Face commit hash (recommended)
+- `HF_TOKEN`: read token only when the model repository is private
+- `VERCEL_SUPPORT_LARGE_FUNCTIONS=1`: enables the 5 GB Function bundle path
+
+Vercel uses `requirements.txt` for the smaller production environment and
+`requirements-research.txt` preserves the complete verified Colab environment.
+See [`docs/vercel_deployment.md`](docs/vercel_deployment.md) for the one-time
+model upload and deployment checklist.
 
 ## Dataset
 

@@ -46,6 +46,9 @@ prints a temporary `gradio.live` link after the model loads. The assistant
 supports all 50 trained intents through answers, session-local demo actions,
 or honest links to external services. It never claims that an email, purchase,
 social post, or physical-device action succeeded without a real connection.
+The interface includes intentional spelling-error examples and optional
+microphone transcription. Voice transcription lazily downloads the open-source
+`openai/whisper-tiny` model on first use.
 
 ## Dataset
 

@@ -55,6 +55,38 @@ class ActionEngineTests(unittest.TestCase):
         self.assertEqual(self.engine.detect_explicit_intent("weather in Mysuru tomorrow"), "weather_query")
         self.assertEqual(self.engine.detect_explicit_intent("turn the bedroom light off"), "iot_hue_lightoff")
 
+    def test_intentional_typo_routing(self):
+        self.assertEqual(self.engine.detect_explicit_intent("calclate 12 * 8"), "qa_maths")
+        self.assertEqual(self.engine.detect_explicit_intent("whts the wethr in Bengaluru tmrw"), "weather_query")
+        self.assertEqual(self.engine.detect_explicit_intent("hows the trffic to airport"), "transport_traffic")
+        self.assertEqual(self.engine.detect_explicit_intent("turn the ligths on"), "iot_hue_lighton")
+
+    def test_weather_location_and_time_extraction(self):
+        self.assertEqual(self.engine._weather_location("weather in Bengaluru tomorrow"), "Bengaluru")
+        self.assertEqual(self.engine._weather_location("naale bengaluru weather eniratte"), "Bengaluru")
+        self.assertTrue(self.engine._asks_tomorrow("wethr in Bengaluru tmrw"))
+        self.assertTrue(self.engine._asks_tomorrow("naale bengaluru weather eniratte"))
+
+    def test_weather_returns_an_answer_not_a_search_handoff(self):
+        responses = iter([
+            {"results": [{"name": "Bengaluru", "latitude": 12.97, "longitude": 77.59}]},
+            {
+                "current": {
+                    "temperature_2m": 25, "apparent_temperature": 26,
+                    "relative_humidity_2m": 60, "wind_speed_10m": 8,
+                },
+                "daily": {
+                    "temperature_2m_min": [19, 20],
+                    "temperature_2m_max": [27, 28],
+                    "precipitation_probability_max": [20, 35],
+                },
+            },
+        ])
+        self.engine._json = lambda *_args, **_kwargs: next(responses)
+        result = self.engine.execute("weather_query", "whts the wethr in Bengaluru tmrw")
+        self.assertEqual(result.status, "completed")
+        self.assertIn("Bengaluru tomorrow", result.message)
+
     def test_low_confidence_clarification_is_actionable(self):
         result = self.engine.clarification([
             {"intent": "weather_query", "probability": 0.35},

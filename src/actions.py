@@ -78,21 +78,22 @@ class ActionEngine:
         """
         lowered = text.lower().strip()
         rules = [
-            (r"\b(calculate|solve)\b|^[\d\s()+*/%.^\-]+$", "qa_maths"),
+            (r"\b(calculate|calclate|calcualte|solve)\b|^[\d\s()+*/%.^\-]+$", "qa_maths"),
             (r"\b(convert|exchange)\b.*\b[A-Z]{3}\b.*\b[A-Z]{3}\b", "qa_currency"),
-            (r"\b(weather|temperature|forecast|rain)\b", "weather_query"),
+            (r"\b(weather|wether|wethr|weathr|temperature|forecast|rain)\b", "weather_query"),
             (r"\b(set|create|add)\b.*\balarm\b|\bwake me\b", "alarm_set"),
             (r"\b(show|list|what).*(alarm|alarms)\b", "alarm_query"),
             (r"\b(add|put)\b.*\b(list|shopping)\b", "lists_createoradd"),
             (r"\b(show|read|what).*(my list|shopping list)\b", "lists_query"),
             (r"\b(remove|delete)\b.*\b(list|shopping)\b", "lists_remove"),
-            (r"\b(recipe|how (?:do|can) i cook|how to cook)\b", "cooking_recipe"),
+            (r"\b(recipe|recpie|receipe|how (?:do|can) i cook|how to cook)\b", "cooking_recipe"),
             (r"\b(define|meaning of)\b", "qa_definition"),
             (r"\b(latest|headlines?)\b.*\b(news|ai|technology|sports)\b", "news_query"),
-            (r"\b(traffic|congestion)\b", "transport_traffic"),
+            (r"\b(traffic|trffic|trafic|congestion)\b", "transport_traffic"),
             (r"\b(time|date)\b.*\b(now|today|current)\b", "datetime_query"),
-            (r"\b(turn|switch)\b.*\blight.*\bon\b", "iot_hue_lighton"),
-            (r"\b(turn|switch)\b.*\blight.*\boff\b", "iot_hue_lightoff"),
+            (r"\btime\b.*\b(in|at)\b", "datetime_convert"),
+            (r"\b(turn|switch)\b.*\b(light|lights|ligth|ligths).*\bon\b", "iot_hue_lighton"),
+            (r"\b(turn|switch)\b.*\b(light|lights|ligth|ligths).*\boff\b", "iot_hue_lightoff"),
             (r"\b(mute|silence)\b", "audio_volume_mute"),
             (r"\b(volume)\b.*\b(down|lower|decrease)\b", "audio_volume_down"),
         ]
@@ -228,7 +229,10 @@ class ActionEngine:
         return ActionResult("handoff", "Meal ideas", f"Find meal ideas for: {query}.", link, "Browse recipes")
 
     def _cooking_recipe(self, text):
-        query = re.sub(r"\b(recipe|how (?:do|can) i cook|how to (?:make|cook))\b", " ", text, flags=re.I).strip(" .?!")
+        query = re.sub(
+            r"\b(recipe|recpie|receipe|how (?:do|can) i cook|how to (?:make|cook)|give me (?:a )?)\b",
+            " ", text, flags=re.I,
+        ).strip(" .?!")
         if not query:
             return ActionResult("needs_input", "Which dish?", "Example: give me a recipe for vegetable pasta")
         try:
@@ -240,7 +244,7 @@ class ActionEngine:
             return ActionResult("handoff", "Recipe search", f"Open recipe results for {query}.", self._query_link("https://www.google.com/search?q=recipe+", query), "Find recipe")
 
     def _math(self, text):
-        expression = text.lower().replace("calculate", "").replace("what is", "")
+        expression = re.sub(r"\b(calculate|calclate|calcualte|solve|what is)\b", "", text.lower())
         expression = expression.replace("×", "*").replace("÷", "/").replace("^", "**")
         expression = re.sub(r"[^0-9+\-*/().% ]", "", expression).strip()
         if not expression:
@@ -287,11 +291,34 @@ class ActionEngine:
         now = datetime.now(ZoneInfo(zone))
         return ActionResult("completed", f"Time in {label}", now.strftime("%A, %d %B %Y · %I:%M %p"))
 
+    @staticmethod
+    def _weather_location(text: str) -> str:
+        lowered = text.lower()
+        aliases = {
+            "bengaluru": "Bengaluru", "bangalore": "Bengaluru", "mysuru": "Mysuru",
+            "mysore": "Mysuru", "mumbai": "Mumbai", "delhi": "Delhi", "chennai": "Chennai",
+            "hyderabad": "Hyderabad", "kolkata": "Kolkata", "pune": "Pune",
+            "london": "London", "tokyo": "Tokyo", "dubai": "Dubai", "singapore": "Singapore",
+            "new york": "New York", "sydney": "Sydney",
+        }
+        for alias, city in aliases.items():
+            if re.search(rf"\b{re.escape(alias)}\b", lowered):
+                return city
+        match = re.search(
+            r"(?:\bin|\bat|\bfor)\s+([A-Za-z .-]{2,40}?)(?=\s+(?:tomorrow|tmrw|tmr|today|now|rn)\b|[?!.]|$)",
+            text,
+            re.I,
+        )
+        return match.group(1).strip(" ?.! ") if match else ""
+
+    @staticmethod
+    def _asks_tomorrow(text: str) -> bool:
+        return bool(re.search(r"\b(tomorrow|tomorow|tmrw|tmr|naale|nale|kal)\b", text.lower()))
+
     def _weather(self, text):
-        match = re.search(r"(?:in|at|for)\s+([A-Za-z .-]{2,40})", text, re.I)
-        city = match.group(1).strip(" ?.!") if match else ""
+        city = self._weather_location(text)
         if not city:
-            return ActionResult("needs_input", "Weather", "Mention a city, for example: weather in Bengaluru")
+            return ActionResult("needs_input", "Which city?", "Try: what is the weather in Bengaluru tomorrow?")
         try:
             geo = self._json("https://geocoding-api.open-meteo.com/v1/search?count=1&name=" + urllib.parse.quote(city))
             place = geo.get("results", [])[0]
@@ -302,7 +329,7 @@ class ActionEngine:
                 "&longitude=" + str(place["longitude"])
             )
             forecast = self._json(url)
-            if "tomorrow" in text.lower():
+            if self._asks_tomorrow(text):
                 daily = forecast["daily"]
                 message = (
                     f"{place['name']} tomorrow: {daily['temperature_2m_min'][1]}–"
@@ -318,8 +345,22 @@ class ActionEngine:
             )
             return ActionResult("completed", "Live weather", message)
         except Exception:
-            link = self._query_link("https://www.google.com/search?q=weather+", city)
-            return ActionResult("handoff", "Weather search", "Live weather service is unavailable. Open the verified search instead.", link, "View weather")
+            try:
+                fallback = self._json("https://wttr.in/" + urllib.parse.quote(city) + "?format=j1")
+                if self._asks_tomorrow(text):
+                    day = fallback["weather"][1]
+                    rain = max(int(hour.get("chanceofrain", 0)) for hour in day.get("hourly", []))
+                    message = f"{city} tomorrow: {day['mintempC']}–{day['maxtempC']}°C, maximum rain probability {rain}%."
+                    return ActionResult("completed", "Tomorrow's forecast", message)
+                current = fallback["current_condition"][0]
+                description = current.get("weatherDesc", [{"value": "Current conditions"}])[0]["value"]
+                message = f"{city} now: {current['temp_C']}°C, feels like {current['FeelsLikeC']}°C, {description.lower()}, humidity {current['humidity']}%."
+                return ActionResult("completed", "Live weather", message)
+            except Exception:
+                return ActionResult(
+                    "error", "Live weather is temporarily unavailable",
+                    f"I understood the location as {city}, but both live weather services failed. Please try again in a minute.",
+                )
 
     def _currency(self, text):
         match = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*([A-Za-z]{3})\s+(?:to|in)\s+([A-Za-z]{3})", text)

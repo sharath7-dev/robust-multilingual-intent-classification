@@ -14,19 +14,20 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from src.actions import ActionEngine, result_to_html  # noqa: E402
 from src.inference import IntentClassifier  # noqa: E402
+from src.voice import transcribe_audio  # noqa: E402
 
 classifier = IntentClassifier()
 actions = ActionEngine()
 
 PRESETS = [
-    ("Calculate", "calculate (245 * 18) / 7"),
-    ("Weather", "what will the weather be in Bengaluru tomorrow"),
-    ("Recipe", "give me a recipe for vegetable pasta"),
-    ("My list", "add milk, medicine and coffee to my shopping list"),
-    ("Time", "what time is it in London"),
-    ("Knowledge", "define retrieval augmented generation"),
-    ("Traffic", "how is the traffic to Kempegowda airport"),
-    ("Smart home", "turn the bedroom lights on"),
+    ("Wethr tmrw", "whts the wethr in Bengaluru tmrw"),
+    ("Calclate", "calclate (245 * 18) / 7"),
+    ("Add to lst", "add milk and medcine to my shoping list"),
+    ("Recpie", "give me a recpie for veg pasta"),
+    ("Time in Londn", "wht time is it in London rn"),
+    ("Trffic", "hows the trffic to Kempegowda airport"),
+    ("Ligths on", "turn the bedroom ligths on"),
+    ("Knowlege", "define retrival augmented generation"),
 ]
 
 
@@ -97,6 +98,14 @@ def run_preset(text: str):
     return (text, *run_command(text))
 
 
+def use_voice(audio_path: str | None):
+    try:
+        text = transcribe_audio(audio_path)
+        return text, "Voice converted to text. Check it, then select **Ask IntentShield**."
+    except Exception as error:
+        return "", f"Voice input failed: {html.escape(str(error))}"
+
+
 def clear_results():
     return EMPTY_ANSWER, "", "", ""
 
@@ -138,7 +147,11 @@ def build_demo() -> gr.Blocks:
                             with gr.Row():
                                 run = gr.Button("Ask IntentShield", variant="primary", elem_classes="run-btn")
                                 clear = gr.Button("Clear", elem_classes="clear-btn")
-                            gr.HTML('<div class="preset-title">TRY AN EXAMPLE</div>')
+                            with gr.Accordion("Speak instead · optional beta", open=False):
+                                voice = gr.Audio(sources=["microphone"], type="filepath", label="Record your request")
+                                voice_button = gr.Button("Convert voice to text", size="sm")
+                                voice_status = gr.Markdown("The first use downloads a small open-source Whisper model.")
+                            gr.HTML('<div class="preset-title">TRY A ROBUSTNESS EXAMPLE · INTENTIONAL TYPOS</div>')
                             preset_buttons = []
                             for start in range(0, len(PRESETS), 4):
                                 with gr.Row(elem_classes="preset-grid"):
@@ -163,6 +176,7 @@ def build_demo() -> gr.Blocks:
         command.submit(run_command, inputs=command, outputs=outputs)
         command.input(clear_results, outputs=outputs)
         clear.click(clear_all, outputs=[command, *outputs])
+        voice_button.click(use_voice, inputs=voice, outputs=[command, voice_status])
         for button, text in preset_buttons:
             button.click(lambda value=text: run_preset(value), outputs=[command, *outputs])
     return demo

@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 
 from src.actions import ActionEngine
+from src.examples import INTENT_EXAMPLES
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,7 @@ class ActionEngineTests(unittest.TestCase):
         with (REPO_ROOT / "configs/label_mapping.json").open(encoding="utf-8") as file:
             labels = set(json.load(file)["label2id"])
         self.assertEqual(labels, self.engine.supported_intents())
+        self.assertEqual(labels, set(INTENT_EXAMPLES))
 
     def test_every_known_intent_has_a_real_handler(self):
         self.engine._json = lambda *_args, **_kwargs: {}

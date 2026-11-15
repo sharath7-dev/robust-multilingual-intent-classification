@@ -13,23 +13,11 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.actions import ActionEngine, result_to_html  # noqa: E402
+from src.examples import INTENT_EXAMPLES, ROBUSTNESS_PRESETS  # noqa: E402
 from src.inference import IntentClassifier  # noqa: E402
-from src.voice import transcribe_audio  # noqa: E402
 
 classifier = IntentClassifier()
 actions = ActionEngine()
-
-PRESETS = [
-    ("EN · Wethr tmrw", "whts the wethr in Bengaluru tmrw"),
-    ("EN · Calclate", "calclate (245 * 18) / 7"),
-    ("HI · मौसं", "कल बेंगलुरु का मौसं कैसा रहेगा"),
-    ("HI · Romanized", "kal bengaluru ka mausm kaisa hai"),
-    ("KN · ಹವಮನ", "ನಾಳೆ ಬೆಂಗಳೂರಿನ ಹವಮನ ಹೇಗಿದೆ"),
-    ("KN · Romanized", "naale bengaluru havamana hegide"),
-    ("EN · Shoping lst", "add milk and medcine to my shoping list"),
-    ("EN · Ligths on", "turn the bedroom ligths on"),
-]
-
 
 def _intent_name(intent: str) -> str:
     return intent.replace("_", " ").title()
@@ -108,12 +96,10 @@ def run_preset(text: str):
     return (text, *run_command(text))
 
 
-def use_voice(audio_path: str | None):
-    try:
-        text = transcribe_audio(audio_path)
-        return text, "Voice converted to text. Check it, then select **Ask IntentShield**."
-    except Exception as error:
-        return "", f"Voice input failed: {html.escape(str(error))}"
+def load_intent_example(intent: str | None):
+    if not intent:
+        return ""
+    return INTENT_EXAMPLES.get(intent, "")
 
 
 def clear_results():
@@ -138,6 +124,33 @@ SPEAK_JS = r"""(text) => {
   utterance.rate = 0.96;
   window.speechSynthesis.speak(utterance);
 }"""
+
+VOICE_CAPTURE_JS = r"""(language) => new Promise((resolve) => {
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!Recognition) {
+    resolve(["", "Voice recognition is unavailable in this browser. Use current Chrome or Edge."]);
+    return;
+  }
+  const recognition = new Recognition();
+  const languages = {"English (India)": "en-IN", "Hindi": "hi-IN", "Kannada": "kn-IN"};
+  recognition.lang = languages[language] || "en-IN";
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+  recognition.onstart = () => console.log("IntentShield voice capture started");
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    resolve([transcript, "Voice captured. Check the text, then select Ask IntentShield."]);
+  };
+  recognition.onerror = (event) => {
+    const message = event.error === "not-allowed"
+      ? "Microphone permission was blocked. Allow it from the lock icon beside the URL, then try again."
+      : `Voice recognition failed: ${event.error}. Please try again.`;
+    resolve(["", message]);
+  };
+  recognition.onnomatch = () => resolve(["", "No clear speech was detected. Please try again."]);
+  try { recognition.start(); }
+  catch (error) { resolve(["", `Could not start the microphone: ${error.message}`]); }
+})"""
 
 CSS = r"""
 :root{--bg:#f4f6f8;--surface:#fff;--ink:#17202a;--muted:#687482;--line:#dce2e7;--navy:#102a43;--teal:#007f73;--amber:#b96a16;--shadow:0 12px 32px rgba(16,42,67,.08)}
@@ -168,19 +181,25 @@ def build_demo() -> gr.Blocks:
                             with gr.Row():
                                 run = gr.Button("Ask IntentShield", variant="primary", elem_classes="run-btn")
                                 clear = gr.Button("Clear", elem_classes="clear-btn")
-                            with gr.Accordion("Speak instead · optional beta", open=False):
-                                voice = gr.Audio(
-                                    sources=["microphone"], type="filepath", format="wav",
-                                    recording=True, label="Record your request",
+                            with gr.Accordion("Speak instead · Chrome or Edge", open=False):
+                                voice_language = gr.Dropdown(
+                                    ["English (India)", "Hindi", "Kannada"],
+                                    value="English (India)", label="Spoken language",
                                 )
-                                voice_button = gr.Button("Convert voice to text", size="sm")
-                                voice_status = gr.Markdown("Allow microphone access in the browser. The first use downloads a small open-source Whisper model.")
+                                voice_button = gr.Button("🎙 Start voice input", size="sm")
+                                voice_status = gr.Markdown("The browser will request microphone permission. Speak after selecting Start voice input.")
                             gr.HTML('<div class="preset-title">TRY MULTILINGUAL ROBUSTNESS EXAMPLES · INTENTIONAL TYPOS</div>')
                             preset_buttons = []
-                            for start in range(0, len(PRESETS), 4):
+                            for start in range(0, len(ROBUSTNESS_PRESETS), 4):
                                 with gr.Row(elem_classes="preset-grid"):
-                                    for label, text in PRESETS[start:start + 4]:
+                                    for label, text in ROBUSTNESS_PRESETS[start:start + 4]:
                                         preset_buttons.append((gr.Button(label, size="sm"), text))
+                            with gr.Accordion("Explore all 50 supported intents", open=False):
+                                intent_selector = gr.Dropdown(
+                                    choices=[(_intent_name(intent), intent) for intent in sorted(INTENT_EXAMPLES)],
+                                    label="Choose an intent",
+                                )
+                                load_intent = gr.Button("Load example request", size="sm")
                         with gr.Column(scale=7):
                             action_output = gr.HTML(EMPTY_ANSWER)
                             speak_button = gr.Button("🔊 Hear assistant reply", size="sm")
@@ -202,7 +221,11 @@ def build_demo() -> gr.Blocks:
         command.submit(run_command, inputs=command, outputs=outputs)
         command.input(clear_results, outputs=outputs)
         clear.click(clear_all, outputs=[command, *outputs])
-        voice_button.click(use_voice, inputs=voice, outputs=[command, voice_status])
+        voice_button.click(
+            fn=None, inputs=voice_language, outputs=[command, voice_status],
+            js=VOICE_CAPTURE_JS,
+        )
+        load_intent.click(load_intent_example, inputs=intent_selector, outputs=command)
         speak_button.click(fn=None, inputs=spoken_response, outputs=None, js=SPEAK_JS)
         for button, text in preset_buttons:
             button.click(lambda value=text: run_preset(value), outputs=[command, *outputs])
